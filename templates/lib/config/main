@@ -1,0 +1,11 @@
+[%
+    PROCESS   config/page
+            + config/site
+            + config/url
+-%]
+
+[% PERL -%]
+    use lib qw[lib];
+    use JSAN::Server;
+    $stash->set(jsan => JSAN::Server->new());
+[% END -%]

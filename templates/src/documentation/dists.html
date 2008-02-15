@@ -1,0 +1,237 @@
+[% META title = 'Documentation - Distribution Layout' %]
+
+<h2>Learn By Example</h2>
+
+<p>
+We have created an example distribution that you can use as a starting
+point for developing and packaging JSAN libraries.
+</p>
+<p>
+<a href="JSAN.Example-0.01.tar.gz">Download and Get Started.</a>
+</p>
+
+<h2>Distribution Format</h2>
+
+<p>
+We currently accept tarballs. That is, a directory structure that has
+been passed through tar and gzip. Here is how you could do that on the
+command line.
+</p>
+
+<pre>
+tar czvf JSAN-0.01.tar.gz JSAN-0.01
+</pre>
+
+<h2>Distribution Name</h2>
+
+<p>
+You must name your distribution. The name must consist of your primary
+class. This should be followed by the distribution version number, such
+as '0.10', and these two pieces of information should be split by a dash
+('-'). This make the full name 'Test.Simple-0.10'. That should be the
+name of the distribution directory when the tarball is unpacked. The
+name of the tarball just adds a '.tar.gz' onto the end making it
+'Test.Simple-0.10.tar.gz'.
+</p>
+
+<h2>Distribution Layout</h2>
+
+<p>
+Here is an example of the structure of a JSAN distribution. I am
+using the JSAN library itself.
+</p>
+
+<pre>
+JSAN
+|-- META.yml
+|-- README
+|-- lib
+|   `-- JSAN.js
+`-- tests
+    |-- importfunctions.t.html
+    |-- importmore.t.html
+    |-- importonly.t.html
+    |-- includepath.t.html
+    |-- index.html
+    |-- testerror.t.html
+    |-- useclass.t.html
+    `-- lib
+        `-- Test
+            |-- Builder.js
+            |-- Harness.js
+            |-- More.js
+            |-- Simple.js
+            `-- Harness
+                `-- Browser.js
+</pre>
+
+<h3>META.yml</h3>
+
+<p>
+  This file contains all the metadata for this distribution. It should
+  have entries for the distribution name, version, dependences, and
+  license information. The format for the 'META.yml' file is YAML, which
+  is outlined in detail at
+  <a href="http://yaml.org/spec/current.html">yaml.org's current specification page</a>.
+</p>
+
+<p>
+  Detailed descriptions of the META.yml file are found in the
+  <a href="http://module-build.sourceforge.net/META-spec-new.html">Module::Build</a>
+  specification.
+</p>
+
+<pre>
+name:         JSAN
+version:      0.01
+author:
+  - Casey West &lt;casey@geeknest.com&gt;
+abstract: JavaScript Archive Network
+license: perl
+build_requires:
+    Test.Simple:    0.10
+</pre>
+
+<p>
+  Here is an overview of what we want in a 'META.yml' file.
+</p>
+
+<dl>
+  <dt>name</dt>
+  <dd>
+    <p>
+      This is a scalar value, the name of the distribution. Examples include
+      'Test.Simple', 'Digest.MD5', and 'JSAN'.
+    </p>
+  </dd>
+  <dt>version</dt>
+  <dd>
+    <p>
+      This is the version number of the distribution. Each version you upload
+      through JAUSE will contain a high version number than the last one.
+    </p>
+  </dd>
+  <dt>author</dt>
+  <dd>
+    <p>
+      A list of authors for this distribution. The value of each line should
+      be an email address for each author. Here is a complex example.
+    </p>
+    <pre>
+author:
+  - Casey West &lt;casey@geeknest.com&gt;
+  - user@example.com
+  - Someone Else &lt;mystery@openjsan.org&gt; (Who Knows)
+    </pre>
+  </dd>
+  <dt>abstract</dt>
+  <dd>
+    <p>
+      An abstract is a short description of what this distribution does.
+      For example, JSAN is "JavaScript Archive Network". DOM.Display is
+      "A Controller for Block Display Toggles."
+    </p>
+  </dd>
+  <dt>license</dt>
+  <dd>
+    <p>
+      This section describes the license this destribution is destributed
+      under. You should choose an
+      <a href="http://opensource.org/licenses/">OSI Approved License</a>.
+      The most common option in Open Source today is the
+      <a href="http://opensource.org/licenses/gpl-license.php">GNU GPL</a>,
+      however, one of the most flexible is the
+      <a href="http://opensource.org/licenses/artistic-license.php">Artistic License</a>.
+      The Perl programming language is distributed under both licenses, which is
+      perfectly optional.
+    </p>
+    <p>
+      A list of valid options are listed
+      <a href="http://search.cpan.org/~kwilliams/Module-Build-0.2611/lib/Module/Build.pm#license">in the Module::Build</a>
+      documentation.
+    </p>
+  </dd>
+  <dt>requires</dt>
+  <dd>
+    <p>
+     This is a hash of required distributions for this one to work. If your
+     distribution requires at least version 0.05 of Digest.MD5, you would use
+     this.
+    </p>
+<pre>
+requires:
+  Digest.MD5: 0.05
+</pre>
+    <p>
+      If you're less concerned about the version of a distribution you can
+      just use zero (0) for the distribution version.
+    </p>
+<pre>
+requires:
+  Digest.MD5: 0.05
+  DOM.Display: 0
+  JSAN: 0.01
+</pre>
+  </dd>
+  <dt>build_requires</dt>
+  <dd>
+    <p>
+     This is a hash of distributions required to run the tests for this
+     distribution. The most common example available today is Test.Simple.
+    </p>
+<pre>
+build_requires:
+  Test.Simple: 0.10
+</pre>
+  </dd>
+</dl>
+
+<h2>README</h2>
+
+<p>
+This file should contain plain text and give a description of the package.
+Optionally it could also contain an example of how to install the libraries.
+Since the libraries can be copied into place this may be less useful than
+it would be for programming languages that require a build system.
+</p>
+
+<h2>JavaScript Libraries under lib/</h2>
+
+<p>
+  These files contain your code. For every namespace that you have, a library
+  should be created. The Test.Simple distribution has an excellent example
+  of the expected structure of the lib/ directory.
+</p>
+<pre>
+lib/Test/Builder.js
+lib/Test/Harness.js
+lib/Test/Harness/Browser.js
+lib/Test/More.js
+lib/Test/Simple.js
+</pre>
+<p>
+  It should be obvious that each of those libraries maps to a namespace. In
+  order those namespaces are Test.Builder, Test.Harness, Test.Harness.Browser,
+  Test.More, and Test.Simple.
+</p>
+<p>
+  Currently only inline documentation will be extracted by the JAUSE
+  Incoming System. Inline documentation is required to be in
+  <a href="http://search.cpan.org/~nwclark/perl-5.8.7/pod/perlpod.pod">
+  Plain Old Documentation Format</a>.
+</p>
+<p>
+  Please see lib/JSAN.js in the JSAN source code for an example.
+</p>
+
+<h2>tests/</h2>
+
+<p>
+  Test files live in the tests/ directory. Each file should be using
+  Test.Simple or Test.More for running their tests and reporting in
+  <a href="http://perldoc.perl.org/Test/Harness/TAP.html">Standard TAP output</a>.
+</p>
+<p>
+  For convenience, you can create an index.html file that runs the
+  Test.Harness.Browser to run all your tests at once.
+</p>

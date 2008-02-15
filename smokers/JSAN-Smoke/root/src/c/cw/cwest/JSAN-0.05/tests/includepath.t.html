@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/JSAN.js"></script>
+    <script type="text/javascript" src="../lib/JSAN.js"></script>
+  </head>
+  <body>
+    <pre id="test"><script>JSAN.errorLevel = "die";
+        var jsan = new JSAN('lib', '/js');
+        jsan.use('Test.More', 'plan', 'ok', 'is');
+
+        plan({tests: 3});
+
+        ok(JSAN.includePath.length >= 4, 'added both libs');
+        var ret = JSAN.addRepository('fakelib');
+        is(ret, JSAN, 'addRepository() returns a JSAN');
+        is(JSAN.includePath[0], 'fakelib', 'addRepository() works');
+    </script></pre>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+#!/usr/local/bin/perl
+use strict;
+use warnings;
+
+use lib qw[lib ../lib];
+use JSAN::Server;
+use JSAN::Indexer;
+
+my $htdocs = JSAN::Server->new->config->get('site') . '/htdocs';
+my $yaml   = 'file://' . $htdocs . '/index.yaml';
+my $sqlite = $htdocs . '/index.sqlite';
+my $mirror = $htdocs . '/mirror.conf';
+
+warn "$yaml\n -> $sqlite\n";
+JSAN::Indexer->import($sqlite);
+warn "   -> $JSAN::Indexer::INDEX_DB\n";
+JSAN::Indexer->create_index_db($yaml);
+
+# Create the mirror.conf file, which serves two purposes.
+#
+# First, it allows JSAN clients that are provided with
+# a potential mirror URI to pull one very simple and small
+# file so that they can positively confirm that it is
+# indeed an openjsan mirror.
+#
+# Secondly, by putting a timestamp into the file at the time
+# we write the index, we can later pull this file from each
+# of the mirrors and determine a) whether it is synced b) How
+# far out of sync it has become.
+#
+# By combining these two functions, the JSAN master server gains
+# the ability to know which mirrors from it's list are still up,
+# and how out of date they all are.
+#
+# This will let us provide better advice to clients on which
+# mirrors to use, and allow us to automatically pull a mirror from
+# the mirror list if it "goes bad".
+#
+# And all of this works using normal rsync, and requires nothing else
+# to be run on the mirrors.
+#
+# The file should look something like this
+#
+# ---------------------------
+# mirror=jsan
+# updated=(unix epoch time)
+# ---------------------------
+
+### Delete this line and uncomment the following lines to enable
+### index.conf file generation (and test it of course).
+### You may want to throw errors instead of just continuing if open
+### doesn't work, especially once we start relying on it.
+ my $t = time;
+ if ( open(FILE, '>', $mirror) ) {
+     print FILE "mirror=jsan\n";
+     print FILE "updated=$t\n";
+     close FILE;
+}

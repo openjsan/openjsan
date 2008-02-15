@@ -1,0 +1,16 @@
+<h1><a href="/doc/[% dist.author.hash %]">[% dist.author.name %]</a> - [% dist.name %]</h1>
+
+<h2>Distributions</h2>
+
+<table class="dist-listing">
+  <tr>
+    <th>Distribution</th>
+    <th>Version</th>
+  </tr>
+[% FOREACH dist IN dists %]
+  <tr>
+    <td><a href="[% dist.version %]">[% dist.name %]</td>
+    <td>[% dist.version %]</td>
+  </tr>
+[% END %]
+</table>

@@ -1,0 +1,22 @@
+#!/usr/local/bin/perl
+use strict;
+use warnings;
+
+use lib qw[lib ../lib];
+use JSAN::Incoming;
+use IO::All;
+
+my $in_dir = io(JSAN::Incoming->new->jsan->incoming);
+
+foreach my $in_file ( $in_dir->all ) {
+    my $incoming = JSAN::Incoming->new(file => $in_file);
+    eval {
+        $incoming->process;
+        unlink $in_file;
+        1;
+    } || do {
+        warn $@;
+        #$incoming->dist->delete;
+    };
+}
+

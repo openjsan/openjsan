@@ -1,0 +1,57 @@
+NAME
+    JSAN.Example - Example Library for the JavaScript Archive Network
+
+SYNOPSIS
+      // Functional Example
+      JSAN.Example.functionOne([
+          'do', 'stuff', 'with',
+          'this', 'example'
+      ]);
+
+      // Class Example
+      var ex = new JSAN.Example;
+      ex.useMeHere();
+
+      // JSAN Example
+      var jsan = new JSAN;
+      jsan.use('JSAN.Example');
+  
+      var ex = new JSAN.Example;
+      ex.useMeHere();
+
+DESCRIPTION
+    This library is really lame. Please update the docs.
+
+  Constructor
+      var ex = new JSAN.Example();
+
+    Create a new "JSAN.Example" object.
+
+  Class Properties
+   DEBUG
+      JSAN.Example.DEBUG = 11; // This one goes...
+
+    blah blah
+
+  Methods
+   useMeHere()
+      ex.useMeHere();
+
+    blah blah
+
+  EXPORTS
+    When used with "JSAN" this will export "functionOne" and "functionTwo"
+    by default.
+
+SEE ALSO
+    "JSAN"
+
+AUTHOR
+    A. Thor <user@example.com>
+
+COPYRIGHT
+      Copyright (c) 2005 A. Thor.  All rights reserved.
+      This module is free software; you can redistribute it and/or modify it
+      under the terms of the Artistic license. Or whatever license I choose,
+      which I will do instead of keeping this documentation like it is.
+

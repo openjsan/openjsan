@@ -1,0 +1,12 @@
+<div id="footer">
+  <ul>
+    <li>page: [% page_file || page.file %]</li>
+    <li>mtime: [% page.date %]</li>
+    <li>contact: [% site.admin %]</li>
+  </ul>
+  <div id="mirror-attribution">
+    This mirror hosted by 
+    <script type="text/javascript" src="/js/script/mirror.js"></script>
+  </div>
+</div>
+

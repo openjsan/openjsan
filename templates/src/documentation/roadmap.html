@@ -1,0 +1,322 @@
+[% META title = 'Documentation - Project Roadmap' %]
+
+<p>
+  The official roadmap of things that need to be completed, and their
+  perceived status at the time this document was last updated
+  ([% page.date %]), and how you can help. Given the pace things are
+  moving at, this roadmap does not refer to specific dates for addition.
+</p>
+
+<hr />
+<h2>The Vision</h2>
+
+<p>Although the JSAN will ultimately be different to the CPAN, the CPAN
+  infrastructure has had 10 years to mature and evolve to it's current state, and
+  serves as a good blueprint for anyone wanting to implement anything
+  similar.
+</p>
+<p>
+  <img src="/images/roadmap/CPANComponents.jpg" alt="CPAN Components" />
+</p>
+
+<hr />
+<h2>The JSAN Components</h2>
+
+<p>This list is probably not complete, things are moving very quickly and some of this may get a little out of date. If there is something you want to do,
+  bring it up on <a href="/community/lists.html#jsan-devel">the JSAN Development</a>
+  mailing list.</p>
+<p>Although there aren't fixed milestones as such, you could consider Milestone 1 to be a working JSAN (in any form) where packages can be uploaded, installed, and used. This has been completed.</p>
+<p>The next step, Milestone 2 if you will, mainly involves the completion of all items not marked as Future, and rounds out JSAN to be much more complete, flexible and rubust.</p>
+<h2>Core Repository</h2>
+<table class="data">
+  <tr>
+    <th>Tasks</th>
+    <th>Status</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Master Server (Physical) </td>
+    <td>Done</td>
+    <td>Source, build and obtain suitable sponsored hosting for master server.</td>
+  </tr>
+  <tr>
+    <td>Static Website Generator </td>
+    <td>Done</td>
+    <td>Template-based generator for primary site, so it's static and slashdot-proof (hopefully)</td>
+  </tr>
+  <tr>
+    <td>JAUSE Account System </td>
+    <td>Done</td>
+    <td>Create and manage JSAN accounts </td>
+  </tr>
+  <tr>
+    <td>JAUSE Upload Server </td>
+    <td>Done</td>
+    <td>Allow uploads to JSAN via secure server </td>
+  </tr>
+  <tr>
+    <td>JAUSE Incoming System </td>
+    <td>Ongoing</td>
+    <td>Receives, checks and processes uploaded packages </td>
+  </tr>
+  <tr>
+    <td>BackJSAN</td>
+    <td>Done</td>
+    <td>Stores/backup all uploaded files ever, even once deleted from primary JSAN </td>
+  </tr>
+  <tr>
+    <td>JSAN Indexer (YAML) </td>
+    <td>Done</td>
+    <td>Generate index from the packages in the repository</td>
+  </tr>
+  <tr>
+    <td>JSAN Indexer (SQLite) </td>
+    <td>Done</td>
+    <td>Generate SQLite index from YAML index. </td>
+  </tr>
+  <tr>
+    <td>JSAN Indexer (JSON)</td>
+    <td>To Do </td>
+    <td>Index as JSON instead/as-well-as full YAML to be more language neutral</td>
+  </tr>
+  <tr>
+    <td>JSAN Indexer Dep-aware </td>
+    <td>To Do </td>
+    <td>Make the indexer aware of per-package dependencies and populate index with them </td>
+  </tr>
+  <tr>
+    <td>Mirror Source </td>
+    <td>Done</td>
+    <td>Provide an rsync source for mirrors to pull from </td>
+  </tr>
+  <tr>
+    <td>Mirror Network 10+ </td>
+    <td>Done</td>
+    <td>10+ mirrors with at least 2 in each of America/Europe/Asia </td>
+  </tr>
+  <tr>
+    <td>Mirror Network 50+ </td>
+    <td>Ongoing</td>
+    <td>50+ mirrors with 3+ on all continents</td>
+  </tr>
+  <tr>
+    <td>Mirror Network 100+ </td>
+    <td>Future</td>
+    <td>100+ mirrors with at least 1 mirror in all major (internet-using) countries.</td>
+  </tr>
+  <tr>
+    <td>Bug/Request Tracker </td>
+    <td>Ongoing</td>
+    <td>Provide bug reporting/tracking for JSAN itself, and seperately for all packages </td>
+  </tr>
+  <tr>
+    <td>Smoke Testing </td>
+    <td>Ongoing</td>
+    <td>Allow anyone to point their browser at something and smoke test packages</td>
+  </tr>
+  <tr>
+    <td>Smoke Testing (Automated) </td>
+    <td>To Do </td>
+    <td>Automated clients  that smoke test and report on all new packages</td>
+  </tr>
+</table>
+<h2>Web Server  Components </h2>
+<table class="data">
+  <tr>
+    <th>Tasks</th>
+    <th>Status</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>JSAN Client/Shell v1 </td>
+    <td>Done</td>
+    <td>Rapid initial working implementation of SQLite/CDBI wrapper and the JSAN Shell </td>
+  </tr>
+  <tr>
+    <td>JSAN Client v2</td>
+    <td>Started</td>
+    <td>Low-dependency, documented and caching standalone client libs </td>
+  </tr>
+  <tr>
+    <td>JSAN Config</td>
+    <td>To Do </td>
+    <td>Mirror navigator/selector and configuration storage </td>
+  </tr>
+  <tr>
+    <td>MiniJSAN</td>
+    <td>Future</td>
+    <td>Cache all package in current index, so you can install package offline </td>
+  </tr>
+  <tr>
+    <td>Package Merger </td>
+    <td>Future</td>
+    <td>Merge arbitrary packages into a single script following dependencies</td>
+  </tr>
+  <tr>
+    <td>Use Server </td>
+    <td>Future</td>
+    <td>Provide fast, cached delivery of arbitrary merged package sets</td>
+  </tr>
+</table>
+<h2>Browser Components </h2>
+<table class="data">
+  <tr>
+    <th>Tasks</th>
+    <th>Status</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Pseudo-Namespaces</td>
+    <td>Done</td>
+    <td>Describe and Document the use of Pseudo-Namespaces </td>
+  </tr>
+  <tr>
+    <td>Test.Simple</td>
+    <td>Done</td>
+    <td>Browser/Director-based Unit Testing Framework for JavaScript </td>
+  </tr>
+  <tr>
+    <td>JSAN.js</td>
+    <td>Done</td>
+    <td>Load arbitrary packages via XMLHttpRequest + eval</td>
+  </tr>
+  <tr>
+    <td>JSAN.js Script Inject </td>
+    <td>To Do </td>
+    <td>Provide same functionality using &lt;script&gt; DOM injection </td>
+  </tr>
+  <tr>
+    <td>JSAN.js Use Server </td>
+    <td>Future</td>
+    <td>Provide same functionality via a Use Server</td>
+  </tr>
+  <tr>
+    <td>Upgrade.js</td>
+    <td>Ongoing</td>
+    <td>Provide a package for &quot;upgrading&quot; browsers to add missing functions </td>
+  </tr>
+  <tr>
+    <td>Integrate Prototype </td>
+    <td>Ongoing</td>
+    <td>Integrate the Prototype JavaScript framework as JSAN packages </td>
+  </tr>
+</table>
+<h2>Documentation and Community </h2>
+<table class="data">
+  <tr>
+    <th>Tasks</th>
+    <th>Status</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Website POD Support </td>
+    <td>Done</td>
+    <td>Provide module documentation on the website using ordinary Perl-compatible POD.<br />
+      Modules using JSPOD should expect bits of code to appear in online docs. </td>
+  </tr>
+  <tr>
+    <td>JSPOD Parser </td>
+    <td>Done</td>
+    <td>Creation of parser for JSPOD, the dialect of POD specifically adapted for JavaScript.</td>
+  </tr>
+  <tr>
+    <td>Website JSPOD Support </td>
+    <td>To Do </td>
+    <td>Website upgraded to use the JSPOD parser instead of plain POD parser.</td>
+  </tr>
+  <tr>
+    <td>Package-time Stripping </td>
+    <td>Done</td>
+    <td>Split out POD at package-time to reduce code size </td>
+  </tr>
+  <tr>
+    <td>Install-time Stripping </td>
+    <td>Future</td>
+    <td>Split out POD at install-time, with &quot;developer mode&quot; option to leave it in. </td>
+  </tr>
+  <tr>
+    <td>IRC</td>
+    <td>Done</td>
+    <td>Provide a primary IRC channel for the JSAN </td>
+  </tr>
+  <tr>
+    <td>Wiki</td>
+    <td>Done</td>
+    <td>Provide a wiki for general use </td>
+  </tr>
+  <tr>
+    <td>Mailing Lists </td>
+    <td>Done</td>
+    <td>A variety of mailing lists for the JSAN </td>
+  </tr>
+  <tr>
+    <td>List/NNTP Upgrade </td>
+    <td>Future</td>
+    <td>Move to Perl-style dual mailing-list/NNTP server structure </td>
+  </tr>
+  <tr>
+    <td>Public SVN Access </td>
+    <td>Done</td>
+    <td>Allow anyone to get access to the code for the JSAN </td>
+  </tr>
+  <tr>
+    <td>RSS/Feeds</td>
+    <td>Done</td>
+    <td>Allow the RSS-savvy to do things their way</td>
+  </tr>
+  <tr>
+    <td>Module Ratings</td>
+    <td>To Do </td>
+    <td>Allow users to rate and review JSAN packages</td>
+  </tr>
+  <tr>
+    <td>Welcome the  Slashdot Hordes </td>
+    <td>To Do </td>
+    <td>It's bound to happen any time now... </td>
+  </tr>
+</table>
+<hr />
+<h2>How can you help? </h2>
+<h3>Create an Import System for RT</h3>
+<p>
+  Create a mechanism by which I can run an RT instance that has a queue
+  for every distribution on JSAN. The idea is to have a centralized place
+  to report and monitor bugs and features for the JavaScript on JSAN.
+</p>
+
+<h3>Create an Authentication Scheme for RT</h3>
+
+<p>
+  All SVN Committers should have full access to the Internal RT instance.
+  It would be great to have an authentication system that would
+  look the user up in the SVN auth basic table and authenticate her
+  credentials against it. Otherwise, the user is a guest.
+</p>
+
+<p>
+  I have some code that can do the authentication against the SVN
+  auth table already.
+</p>
+
+<h3>Create a Mirror</h3>
+
+<p>
+  Fill in our global network. Find out how to be
+  <a href="/community/mirrors.html">a mirror</a> for JSAN.
+</p>
+
+<h3>Writing Documentation</h3>
+
+<p>
+  Open JSAN could use some good documentation on writing excellent classes
+  and function libraries. The documentation should include support for the
+  JSAN library and example tests using the Test.Simple distribution.
+</p>
+
+<h3>Promote JSAN</h3>
+
+<p>
+  Get the word out on your blog, news site, at work, or just use some of
+  our <a href="/community/promote.html">ideas</a> to promote the
+  project.
+</p>

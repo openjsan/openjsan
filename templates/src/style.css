@@ -1,0 +1,295 @@
+[% META type = 'text' -%]
+
+[%
+    lightgreen = '#90ee90';
+    darkgreen  = '#006400';
+    darkred    = '#640000';
+    lightgrey  = '#aaaaaa';
+    white      = '#ffffff';
+-%]
+
+@import url( tagcloud.css );
+
+body {
+    background-color: white;
+}
+
+#beta {
+  text-align: right;
+  float: right;
+  font-style: italic;
+  color: [% darkred %];
+  font-size: 110%;
+}
+
+pre {
+    border: 1px dashed [% darkgreen %];
+    padding: 5px;
+    background-color: [% lightgreen %];
+    font-family: Monaco, "Courier New", monospace;
+    font-size: 90%;
+    overflow: auto;
+}
+
+h1 {
+    color: [% darkgreen %];
+    font-family: "Arial Rounded MT Bold", "Gill Sans", sans-serif;
+    text-decoration: none;
+    border-bottom: 1px solid [% lightgrey %];
+}
+
+a.u {
+    color: inherit;
+    font-family: inherit;
+    text-decoration: inherit;
+}
+
+#top-landing {
+    font-size: 1px;
+    top: -30px;
+}
+
+#header {
+    position: relative;
+    width: 100%;
+}
+
+#page-title {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    color: [% lightgrey %];
+    font-family: "Century Gothic Bold", "Arial Black", sans-serif;
+    font-size: 160%;
+    margin: 25px;
+    letter-spacing: 5px;
+    margin-bottom: -6px;
+    padding-bottom: 0px;
+}
+
+#page-title .mark {
+    color: [% darkgreen %];
+}
+
+#jsan-logo-rhino {
+	background: url("/images/logo/jsan-logo-rhino.png") top left no-repeat;
+	height: 0;
+	overflow: hidden;
+	padding-top: 117px;
+	margin-left: 12px;
+    color: [% darkgreen %];
+    text-align: left;
+    font-size: 160%;
+}
+
+#jause-logo-shark {
+	background: url("/images/logo/jause-logo-shark.png") top left no-repeat;
+	height: 0;
+	overflow: hidden;
+	padding-top: 117px;
+	margin-left: 12px;
+    color: [% darkgreen %];
+    text-align: left;
+    font-size: 160%;
+}
+
+#slogan {
+    font-family: Monaco, "Courier New", monospace;
+    font-size: 160%;
+    letter-spacing: 2px;
+    color: [% darkgreen %];
+    text-align: center;
+}
+
+#main {
+    border-top: 1px solid [% darkgreen %];
+}
+
+#footer {
+    border-top: [% lightgreen %] solid 1px;
+    color: [% lightgrey %];
+    font-size: 60%;
+    font-family: sans-serif;
+    clear: both;
+    padding-top: 2px;
+}
+
+#footer ul {
+    display: inline;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#footer ul li {
+    display: inline;
+    border-left: 1px solid [% lightgreen %];
+    padding: 2px 10px;
+}
+
+#footer ul li:first-child {
+    border-left: none;
+    margin-left: 5px;
+}
+
+#mirror-attribution {
+    float: right;
+    width: 200px;
+    color: [% darkgreen %];
+}
+
+#mirror-attribution img {
+    display: block;
+}
+
+#login-status {
+    font-family: "Arial", "Gill Sans", sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: [% lightgrey %] 1px dashed;
+    padding: 2px;
+}
+
+#current-user {
+    font-family: "Arial Rounded MT Bold", "Gill Sans", sans-serif;
+}
+
+#navigation {
+    float: left;
+    width: 135px;
+    font-family: "Arial Rounded MT Bold", "Gill Sans", sans-serif;
+    font-size: 80%;
+    margin-left: 15px;
+}
+
+#navigation ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#navigation ul li {
+    display: inline;
+    padding: 0;
+}
+
+#navigation ul li a {
+    display: block;
+    color: [% white %];
+    background-color: [% darkgreen %];
+    padding: 3px;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-bottom: 1px solid [% lightgreen %];
+}
+
+#navigation ul ul li a {
+    color: [% darkgreen %];
+    font-weight: normal;
+    padding-left: 10px;
+    border-bottom: 1px solid [% darkgreen %];
+    background-color: [% lightgreen %];
+}
+
+#content {
+    margin: 15px;
+    padding: 10px;
+    margin-left: 180px;
+    font-family: sans-serif;
+}
+
+#form-landing {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 5px;
+    height: 5px;
+    visibility: hidden;
+}
+
+#show-error {
+    color: red;
+    font-weight: bold;
+    border: red 1px solid;
+    padding: 5px;
+}
+
+fieldset.standard-form {
+	border: 1px dashed #aaa;
+	padding-left: 1em;
+	padding-bottom: 0.5em;
+}
+
+fieldset.standard-form legend {
+	background: #fff;
+	margin-bottom: 0.3em;
+	font-weight: bold;
+}
+
+fieldset.standard-form label {
+	display: block;
+	position: relative;
+	margin-bottom: 0.5em;
+}
+
+fieldset.standard-form input, fieldset.standard-form select {
+	position: absolute;
+	left: 30%;
+	width: 50%;
+}
+
+fieldset.standard-form input.submit {
+	position: relative;
+	width: auto;
+}
+
+fieldset.standard-form p {
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+fieldset.subscribe {
+	margin-top: 1em;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0px;
+}
+
+.column {
+  float: left;
+  width: 48%;
+  margin-right: 10px;
+}
+
+.columns {
+    clear: both;
+}
+
+img {
+	border: none;
+}
+
+table {
+    border: 1px solid [% lightgrey %];
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th {
+	border: 1px solid [% darkgreen %];
+	background: [% lightgreen %];
+}
+
+table td {
+	border: 1px solid [% lightgrey %];
+}
+
+table th, table td {
+	padding: 3px;
+}

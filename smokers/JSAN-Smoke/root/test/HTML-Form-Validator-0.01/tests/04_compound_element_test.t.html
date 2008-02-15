@@ -1,0 +1,54 @@
+<html>
+<head>
+    <script type="text/javascript" src="../inc/Test/Builder.js"></script>
+    <script type="text/javascript" src="../inc/Test/More.js"></script>
+
+    <script type="text/javascript" src="../lib/HTML/Form/Validator.js"></script>
+    <script type="text/javascript" src="../lib/HTML/Form/Validator/Element.js"></script>    
+    <script type="text/javascript" src="../lib/HTML/Form/Validator/CompoundElement.js"></script>        
+</head>
+<body>
+<FORM NAME='form1'>
+<INPUT TYPE='hidden' name='element3' VALUE='1' />
+<INPUT TYPE='hidden' name='element4' VALUE='1' />
+</FORM>
+<pre id='test'><script type="text/javascript">
+
+plan({ tests: 11 });
+
+// Tests with a compound element
+
+var my_success_handler = function (formObj) { pass("the form was submitted successfully"); return true; };
+
+var validator3 = new HTML.Form.Validator('form1', my_success_handler);
+isaOK(validator3, 'HTML.Form.Validator');
+
+is(validator3.form_name, 'form1', '... got the correct form name');
+is(validator3.elements.length, 0, '... we have no elements in the validator yet');
+
+// create a single element
+
+var compound_element = new HTML.Form.Validator.CompoundElement('compound error!');
+isaOK(compound_element, 'HTML.Form.Validator.CompoundElement');
+
+is(compound_element.error, 'compound error!', '... got the right compound element error message');
+is(compound_element.elements.length, 0, '... we have 0 elements in the compound element now');
+
+compound_element.addElement(new HTML.Form.Validator.Element('element3'));
+compound_element.addElement(new HTML.Form.Validator.Element('element4'));
+
+is(compound_element.elements.length, 2, '... we have 2 elements in the compound element now');
+
+// add it to the validator
+validator3.addElement(compound_element);
+
+is(validator3.elements.length, 1, '... we have 1 element in the validator now');
+is(validator3.elements[0], compound_element, '... and it is the element3');
+
+// and validate
+ok(validator3.validate(), '... the form did validate successfully (with compound element)');
+
+
+</script></pre>
+</body>
+</html>

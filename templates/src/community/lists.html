@@ -1,0 +1,70 @@
+[% META title = 'Community - Mailing Lists' -%]
+
+[%
+   host   = 'groups.google.com';
+
+   groups = [
+      {
+          title  => 'JSAN Users',
+          name   => 'jsan',
+          desc   => 'General discussion list for JSAN users and JavaScript users alike.',
+      },
+      {
+          title  => 'JSAN Authors',
+          name   => 'jsan-authors',
+          desc   => 'JSAN Authors can discuss development of new an existing libraries.',
+      },
+      {
+          title  => 'JSAN Testers',
+          name   => 'jsan-testers',
+          desc   => 'JSAN Testers doing automated and manual testing can report to this list.',
+      },
+      {
+          title  => 'JSAN Development',
+          name   => 'jsan-devel',
+          desc   => 'Development of Open JSAN and its infrastructure.',
+      },
+      {
+          title  => 'JSAN Commits',
+          name   => 'jsan-commit',
+          desc   => 'Commit messages for JSAN are sent here.',
+      },
+   ];
+
+-%]
+
+<p>
+  Special thanks go to <a href="http://googlegroups.com">Google
+  Groups</a> for hosting, managing, and - in all other respects -
+  dealing with our mailing lists.
+</p>
+
+[% FOR group IN groups -%]
+  <h1 id="[% group.name %]">[% group.title %]</h1>
+   <dl>
+     <dt>Description</dt>
+     <dd><p>
+       [% group.desc %]
+     </p></dd>
+
+     <dt>Archives</dt>
+     <dd><p>
+       <a href="http://[% host %]/group/[% group.name %]">Browse Google Groups Archives</a>
+     </p></dd>
+
+     <dt>Subscribe</dt>
+     <dd>
+       <form action="http://[% host %]/group/[% group.name %]/boxsubscribe">
+       <fieldset class="standard-form subscribe">
+         <legend>Subscribe to [% group.name %] <em>at</em> [% host %]</legend>
+
+         <label for="email-[% group.name %]">Email Address
+         <input type="text" name="email" id="email-[% group.name %]" value="" />
+         </label>
+         <input type="submit" class="submit" name="sub" value="Subscribe" />
+       </fieldset>
+       </form>
+     </dd>
+
+   </dl>
+[% END -%]

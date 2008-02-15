@@ -1,0 +1,24 @@
+<html>
+<head>
+  <script type="text/javascript" src="../lib/JSAN.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    JSAN.errorLevel = 'die';
+    var jsan = new JSAN('lib');
+    jsan.use('Test.Harness');
+    jsan.use('Test.Harness.Browser');
+
+    var t = new Test.Harness.Browser();
+    
+    t.runTests(
+        "importfunctions.t.html",
+        "importmore.t.html",
+        "importonly.t.html",
+        "includepath.t.html",
+        "testerror.t.html",
+        "useclass.t.html"
+    );
+</script>
+</body>
+</html>

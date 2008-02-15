@@ -1,0 +1,11 @@
+---
+name: JSAN
+version: 0.05
+author:
+  - Casey West <casey@geeknest.com>
+abstract: ~
+license: artistic
+build_requires:
+  Test.Simple: 0.11
+provides: {}
+generated_by: Module::Build version 0.2611

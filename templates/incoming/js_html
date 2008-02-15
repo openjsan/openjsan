@@ -1,0 +1,18 @@
+<h1><a href="/doc/[% dist.author.hash %]">[% dist.author.name %]</a> - <a href="/doc/[% dist.author.hash %]/[% dist.name.replace('\.', '/') %]/[% dist.version %]">[% dist.name %]-[% dist.version %]</a></h1>
+
+<script>
+    var docView = new DOM.Display;
+</script>
+
+<div>
+  <a href="javascript:docView.showOnlyElement('documentation')">Documentation</a> |
+  <a href="javascript:docView.showOnlyElement('source')">Source</a>
+</div>
+
+<div id="documentation">[% pod %]</div>
+<pre id="source">[% js_src | html %]</pre>
+
+<script>
+    docView.hideElement('source');
+    docView.showElement('documentation');
+</script>

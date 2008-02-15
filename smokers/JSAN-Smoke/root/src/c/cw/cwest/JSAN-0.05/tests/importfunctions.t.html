@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/JSAN.js"></script>
+  </head>
+  <body>
+    <pre id="test"><script>
+        JSAN.use('Test.Simple');
+        var test = new Test.Builder();
+        test.plan({tests: 2});
+        test.ok(typeof(plan) == 'function', 'Loaded plan function.');
+        test.ok(typeof(ok)   == 'function', 'Loaded ok function.');
+    </script></pre>
+  </body>
+</html>

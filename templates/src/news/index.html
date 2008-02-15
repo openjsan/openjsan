@@ -1,0 +1,268 @@
+[% META title = 'News' %]
+
+<h1>News</h1>
+
+<h2>Update - 2007-01-14</h2>
+
+<ul>
+  <li><a href="http://planet.openjsan.org">Planet JavaScript</a> migrated to
+  <a href="http://plagger.org/trac">Plagger</a> and working again.</li>
+  <li>Beginnings of better mirror index and staleness management rolled
+  out thanks to <a href="http://ali.as">Adam</a>.</li>
+</ul>
+
+<h2>Update - 2007-01-12</h2>
+
+<ul>
+  <li>Bug fixed in uploader that prevented Windows users from uploading new
+  distributions properly.</li>
+</ul>
+
+<h2>Update - 2006-09-30</h2>
+
+<ul>
+  <li>JAUSE Uploads are once again thought to be automatically processing four times a day.  The situation is being monitored in case this is once again incorrect.</li>
+  <li>RT tickets were cleaned up a bit.  Please report bugs there as always.</li>
+  <li>Join us in #jsan on Freenode if you are interested in what's going on.</li>
+</ul>
+
+<!-- __END__ -->
+
+<h2>Update - 2006-02-28</h2>
+
+<ul>
+  <li>JAUSE Uploads are now processed automatically, four times a day.</li>
+  <li>Rob Kinyon will be a JSAN Administrator, and will help with the development and deployment of new JSAN architecture.</li>
+</ul>
+
+<h2>Update - 2005-10-25</h2>
+
+<ul>
+  <li>Greatly improved recent uploads RSS feed. Thanks in huge part to David Wheeler.</li>
+  <li>Fixed the processing and indexing system. There were a lot of little bugs.</li>
+  <li>Decoupled the processing and indexing system.</li>
+  <li>System is now more stable, and close to automating the processing of incoming distributions.</li>
+  <li>Next steps are notifying an author when processing is complete, and notifying the author if processing failed.</li>
+</ul>
+
+<h2>Update - 2005-08-31</h2>
+
+<ul>
+  <li>Fixed the <a href="/tag">tag cloud</a>.</li>
+  <li>Began working at <a href="http://socialtext.com">SocialText</a> on Monday</li>
+</ul>
+
+<h2>Update - 2005-08-18</h2>
+
+<ul>
+  <li>Two more mirrors were created. One in Portugal and another hosted
+      by Playboy.</li>
+  <li>David Wheeler updated the distribution display to show the README.</li>
+  <li>David Wheeler and I made the META link point to JSON or YAML meta files,
+      given context.</li>
+  <li>I presented a talk on JSAN to the Sophos in late July that was very well received.</li>
+  <li>I presented two talks on JSAN at OSCON in Portland that were both well received.</li>
+  <li>The BOF on JSAN at OSCON was small but very well received.</li>
+  <li>JSAN powered <a href="http://oscon.blogdns.org/">Planet OSCON</a>
+      which was a huge success for a kind of "flash aggregator" for the event.</li>
+  <li>I was able to get a little rest and family time, and make some other
+      huge changes in my life that I'll write about later.</li>
+</ul>
+
+<h2>Update - 2005-07-26</h2>
+
+<ul>
+  <li>Brian Cassidy worked on much more style and XHTML validity changes.</li>
+  <li>Added feeds to <a href="http://planet.openjsan.org">Planet JavaScript</a>.</li>
+  <li>Got some good press on <a href="http://radar.oreilly.com/archives/2005/07/jsan_the_javasc.html">radar.oreilly.com</a>.</li>
+  <li>Planned the <a href="http://oscon.kwiki.org/index.cgi?JavaScriptArchiveNetwork">Hack-A-Thon at OSCON</a>. Please sign up!</li>
+  <li>I've declared Thursday, August 4th as JSAN Day. JSAN will be considered released that day.</li>
+  <li>The smoke testing system mostly works now. <a href="http://testing.openjsan.org/retrieve">Start Testing!</a></li>
+  <li>David Wheeler added JSON Metadata support to Module-Build-JSAN, which is nearing completion.</li>
+  <li>I gave <a href="/doc/c/cw/cwest/JSAN/0.10/lib/JSAN.html">the JSAN Library</a> a working over, including new features such as JSAN.require() and JSAN.exporter() (the brother of Perl's import() for symbols).</li>
+</ul>
+
+<h2>Update - 2005-07-20</h2>
+
+<ul>
+  <li>Brian Cassidy worked on more XHTML validity changes.</li>
+  <li>I released <a href="http://planet.openjsan.org">Planet JavaScript</a></li>
+  <li>That would not have happened if Bob Ippolito hadn't fixed the Planet code to work on FreeBSD, and to handle utf8 properly.</li>
+  <li>The <a href="/recent.rss">RSS Feed</a> got proper dates for each entry. Now they just need descriptions for each upload. I'm thinking the abstract and the Changes file. What do you think?</li>
+  <li>Adam Kennedy is working on a better road map.</li>
+</ul>
+
+<h2>Update - 2005-07-19</h2>
+
+<ul>
+  <li>Brian Cassidy worked over the site's style to make it IE friendly. By far the coolest thing of the day.</li>
+  <li>Adam Kennedy is working on an alternative JSAN Client.</li>
+  <li>David Wheeler added support for tags in META.yml, in Module-Build-JSAN. This is very cool, it means you can supply a list of tags in Build.PL. Who needs categories anymore?</li>
+  <li>David also tweaked the JSAN Library to always refer to JSAN.globalScope to find the global scope. <a href="/go?r=JSAN-0.08">JSAN 0.08</a> was released with this change (I forgot to update the Changes file!). I also added tags to this library.</li>
+  <li>I added support for stripping inline POD from JavaScript libraries in Moudle-Build-JSAN. This will keep JSAN.js lean.</li>
+  <li>I added tag support to the incoming processor.</li>
+  <li>I added a tag cloud to the <a href="/">home page</a></li>
+  <li>The incoming processor now builds <a href="/tag/use">pages</a> for <a href="/tag/jsan">tags</a> too.</li>
+</ul>
+
+<h2>Update - 2005-07-18</h2>
+
+<ul>
+  <li>Took Saturday and Sunday off. It was nice.</li>
+  <li>We now have <a href="/community/mirrors.html">a mirror in the UK</a>. Thanks Pete!</li>
+  <li>Moved master sites to the <a href="http://pair.com">pair Networks</a> mirror.</li>
+  <li>SVN now served from <a href="https://svn.openjsan.org:81">https://svn.openjsan.org:81</a>.</li>
+  <li>Changed styles to work a little better in broken IE.</li>
+  <li><a href="/community/mirrors.html">Mirrors</a> can now control their logo with JavaScript.</li>
+  <li>Rob Kinyon update the <a href="/go?l=JSAN">JSAN Library</a> to accept multiple arguments and have a defined mechanism to import nothing.</li>
+  <li>I fixed indexes in the latest <a href="http://search.cpan.org/dist/JSAN">JSAN Shell</a> for installation.</li>
+  <li>Module-Build-JSAN now extracts inline POD (but doesn't remove it). This is in Subversion for now. Rob did this.</li>
+  <li><a href="/src">View the Source!</a></li>
+  <li>Promoted our <a href="http://conferences.oreillynet.com/cs/os2005/view/e_sess/7486">JSAN BOF at OSCON</a> on the home page.</li>
+  <li>A reStructuredText to HTML tool was written and committed by Bob Ippolito, it will be integrated with the incoming processor to support RST documentation.</li>
+</ul>
+
+<h2>Update - 2005-07-15</h2>
+
+<ul>
+   <li>We're now listed with <a href="http://cia.navi.cx/stats/project/jsan">CIA</a>.</li>
+   <li>The author-editable wiki <a href="http://master.openjsan.org/documentation/wiki/index.cgi">is online</a>,
+       but still requires tweaking.</li>
+   <li>Smoke Testing is even closer to release.</li>
+   <li>You can read commits via <a href="http://googlegroups.com/group/jsan-commit">the mailing list</a>,
+       with diffs, if you like.</li>
+   <li>An AUTHORS file was started at the root of SVN, please add yourself if you have commit rights.</li>
+   <li>A minimal MAP was added to SVN as well.</li>
+   <li>Garrett Rooney, Tatsuhiko Miyagawa, and Brian Cassidy all teamed up to fix up the Recent Uploads RSS.</li>
+   <li>Yuval Kogman fixed some JavaScript on the <a href="/go">Go</a> page, and fixed style issues</li>
+   <li>Adam Kennedy fixed some style issues on the site as well.</li>
+   <li>Brian Cassidy massaged the HTML to make it more compliant.</li>
+   <li>John Cappiello changed the "XML" images to "RSS" images, and also wrote the Kwiki Plugins required to get
+       JAUSE authentication working for the wiki.</li>
+</ul>
+
+<h2>Update - 2005-07-15</h2>
+
+<ul>
+  <li>We have a <a href="/community/mirrors.html">mirror in Europe!</a></li>
+  <li><a href="/community/svn.html">Subversion Access</a> will
+      be wide open.</li>
+  <li><a href="/documentation/roadmap.html">Road map</a> and
+      <a href="/faq/index.html">FAQ</a> documents updated.</li>
+  <li>Soon, probably tomorrow,  we'll have both smoke testing and author-writable
+      wiki documentation online.</li>
+  <li>Get recent uploads <a href="/recent.rss">as RSS</a>.</li>
+</ul>
+
+<h2>Update - 2005-07-14</h2>
+
+<p>
+  I've opened
+  <a href="/community/svn.html">Subversion access</a>
+  for all to see. The 
+  <a href="/go?l=JSAN">JSAN Library</a>
+  version 0.06 was released. I think I'm going to rest a little tomorrow.
+</p>
+
+
+<h2>Update - 2005-07-13</h2>
+
+<p>
+  Added search on the
+  <a href="http://openjsan.org">home page</a>. Added quick
+  link functionality (go to
+  <a href="go?l=HTTP.Query">HTTP.Query</a>).
+  Version 0.03 of
+  <a href="http://search.cpan.org/dist/JSAN">the JSAN Shell</a>
+  now follows prerequisites and installs them. We have
+  <a href="/community/mirrors.html">two mirrors in Taiwan</a>
+  including one with IPv6 support.
+</p>
+
+<h2>Update - 2005-07-12</h2>
+
+<p>
+  Lots of internal changes: switched to hashing login names to support
+  expected growth, JAUSE IDs are now all lower-case (your ID may have been
+  changed for you!).
+  <a href="http://bulknews.typepad.com/blog/">Tatsuhiko Miyagawa</a> launched
+  a <a href="http://jsan.jp">mirror in Japan</a>.
+  <a href="http://ali.as">Adam Kennedy</a> built a mock of a
+  <a href="http://search.cpan.org/perldoc?Class::DBI">Class::DBI</a> and
+  <a href="http://www.sqlite.org/">SQLite</a> index system.
+  I used that to convert the new
+  <a href="/index.yaml">YAML Index</a> to
+  <a href="/index.sqlite">an SQLite index</a>.
+  With that the <a href="http://search.cpan.org/dist/JSAN/">JSAN Shell</a> has
+  been released! Look for version 0.02.
+  <a href="/documentation/install.html">Learn how to install JSAN libraries.</a>
+</p>
+<pre>
+shell> jsan index
+shell> jsan -p /usr/local/js install Digest.MD5
+</pre>
+
+<h2>Update - 2005-07-10</h2>
+
+<p>
+  You can now complain about bugs and stuff in <a
+  href="/community/rt.html">the JSAN RT</a>. The documentation bugs in
+  the <a href="/doc/CWEST/JSAN/0.04/lib/JSAN.html">JSAN library</a> have
+  been fixed. If you are a mirror, or want to be, you can now
+  <a href="/community/mirrors.html">get your logo on you mirror</a>. We
+  have launched a small
+  <a href="http://www.cafepress.com/jsan">Cafepress Store</a> so you can
+  wear an awesome JSAN shirt to your next geek event. JAUSE has better
+  input validation now.
+</p>
+
+<h2>Update - 2005-07-08</h2>
+
+<p>
+  We now have <a href="/community/mirrors.html">mirrors</a>.
+  The JSAN library has been updated and now has a more simple
+  syntax and some default paths built in. If you install your
+  libraries into the same place JSAN.js is you can just do
+  this now.
+</p>
+<pre>
+JSAN.use('Test.Simple');
+</pre>
+
+<h2>Update - 2005-07-08</h2>
+
+<p>
+  Marshall Roch created some excellent logos and gave me more
+  CSS pointers. Ask Hansen provided a Develooper signed
+  SSL certificate which means you can now log in over SSL!
+  The start of a <a href="/documentation/roadmap.html">road map</a>
+  has been created, and we've created a neat way to
+  <a href="/community/promote.html">promote JSAN</a>.
+  There were many internal changes as well.
+</p>
+
+<h2>Update - 2005-07-07</h2>
+
+<p>
+  We have <a href="/community/lists.html">Mailing Lists!</a>
+  I've also included information on the project and the
+  <a href="/about.html">team of people</a> who have directly or
+  indirectly helped this project in a positive way.
+</p>
+
+<h2>Beta 1 Launched - 2005-07-05</h2>
+
+<p>
+  This release has a View Source feature, better navigation, and some
+  new <a href="/documentation">Documentation</a>.
+</p>
+
+<h2>Launched at YAPC::NA - 2005-06-29</h2>
+
+<p>
+  The first <em>alpha</em> release.
+  The weeks leading up to OSCON will be used to push this system into
+  a more stable and useful state. Version 0.01 is expected to be released
+  at OSCON.
+</p>
+

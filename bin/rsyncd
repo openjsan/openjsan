@@ -1,0 +1,2 @@
+#!/usr/local/bin/bash
+/usr/local/bin/rsync --daemon --config=/usr/sites/openjsan/etc/rsyncd.conf

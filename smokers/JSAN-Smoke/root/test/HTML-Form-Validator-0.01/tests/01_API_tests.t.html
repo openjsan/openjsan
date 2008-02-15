@@ -1,0 +1,43 @@
+<html>
+<head>
+    <script type="text/javascript" src="../inc/Test/Builder.js"></script>
+    <script type="text/javascript" src="../inc/Test/More.js"></script>
+  
+    <script type="text/javascript" src="../lib/HTML/Form/Validator.js"></script>
+    <script type="text/javascript" src="../lib/HTML/Form/Validator/Element.js"></script>    
+    <script type="text/javascript" src="../lib/HTML/Form/Validator/CompoundElement.js"></script>        
+</head>
+<body>
+<pre id='test'><script type="text/javascript">
+
+plan({ tests: 15 });
+
+// Test the APIs
+
+var form_validator = new HTML.Form.Validator()
+isaOK(form_validator, 'HTML.Form.Validator');
+
+canOK(form_validator, 'addElement');
+canOK(form_validator, 'validate');
+
+var form_validator_element = new HTML.Form.Validator.Element()
+isaOK(form_validator_element, 'HTML.Form.Validator.Element');
+
+canOK(form_validator_element, 'handleError');
+canOK(form_validator_element, 'validate');
+canOK(form_validator_element, 'getValue');
+canOK(form_validator_element, 'focusElement');
+canOK(form_validator_element, 'test');
+
+var form_validator_compound_element = new HTML.Form.Validator.CompoundElement()
+isaOK(form_validator_compound_element, 'HTML.Form.Validator.CompoundElement');
+
+canOK(form_validator_compound_element, 'handleError');
+canOK(form_validator_compound_element, 'addElement');
+canOK(form_validator_compound_element, 'validate');
+canOK(form_validator_compound_element, 'focusElement');
+canOK(form_validator_compound_element, 'test');
+
+</script></pre>
+</body>
+</html>

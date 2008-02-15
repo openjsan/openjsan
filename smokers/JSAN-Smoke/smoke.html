@@ -1,0 +1,18 @@
+[% PERL %]
+
+use IO::All;
+my $index = $stash->get('r')->filename;
+$index =~ s/smoke\.html/index\.html/;
+my $html = io($index)->slurp;
+
+$html =~ s[(</head>)][
+            <script type="text/javascript" src="/test/Test/Harness/Browser/Smoke.js"></script>
+            $1
+          ]x;
+
+$html =~ s[(new\s+Test.Harness.Browser)][$1.Smoke];
+
+print $html;
+
+[% END %]
+

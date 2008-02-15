@@ -1,0 +1,8 @@
+<div id="header">
+  <p id="beta">
+    This infrastructure is considered to be <span style="font-style: normal">beta</span>.<br/> 
+    Everything should be usable, to a certain degree. 
+  </p>
+  <div id="[% page.logo || site.logo %]">JSAN</div>
+  <div id="page-title"><span>[% page.pagetitle || title %]</span></div>
+</div>

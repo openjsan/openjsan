@@ -1,0 +1,7 @@
+[%
+    site = {
+        name      = 'JSAN',
+        server    = 'http://openjsan.org',
+        admin     = 'jcap-jsan at apt202 dot net',
+    };
+-%]

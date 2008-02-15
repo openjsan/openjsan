@@ -1,0 +1,99 @@
+[% META title = 'Frequently Asked Questions' %]
+
+<h1>General</h1>
+
+<h2>What are You Trying To Do Here?</h2>
+
+<p>
+  I'm trying to build the infrastructure for Web 2.0, and beyond. JSAN aims
+  to be the catalyst for more application driven Open Source JavaScript
+  development.
+</p>
+
+<h2>How does the website work?</h2>
+
+<p>
+  The JavaScript Authors Upload Server (JAUSE) allows contributors to
+  upload their software. There is an Incoming system that processes new
+  uploads and generates the website.
+</p>
+
+<p>
+  Please read the <a href="/documentation/dists.html">Distribution Format</a>
+  documentation for an idea of what your distributions should look like.
+</p>
+
+<h2>What do the JavaScript people think of this?</h2>
+
+<p>
+  People seem to fall into two camps. The first are people who consider
+  themselves programmers or application developers. They like JSAN
+  because it allows you to develop in an application style. Thinking
+  about modular components is important in software design. The second
+  group of people consider JavaScript a scripting language, something
+  you write small things in. I think both definitions are true,
+  and both types of code can live on JSAN.
+</p>
+
+<h2>Are You Building some kind of Framework?</h2>
+
+<p>
+  No. However, the <a href="/go?l=JSAN">JSAN Library</a> brings something
+  to JavaScript that it has been lacking, an import system. Most programming
+  languages used for application development have a system that allows
+  you to write your code in concise, structured pieces. Until now you
+  have had to do this with multiple [% "<script>" | html %] tags or
+  by writing one thousand lines of JavaScript in a single file.
+</p>
+
+<p>
+  That being said, JSAN is not a framework, it is infrastructure. The
+  JSAN Library is not a framework either, but many authors like its
+  abilities and write their code to take advantage of them. Good
+  developers are letting you either use JSAN or not with a small
+  amount of compatibility code.
+</p>
+
+<h2>Do I Have to Write My Code Your Way?</h2>
+
+<p>
+  No. Your code does not have to take advantage of the JSAN Library
+  to be on the JSAN infrastructure. There is a small barrier to entry,
+  you must create a distribution and consider the naming of the files
+  you put under the <code>lib/</code> directory.
+</p>
+
+<h2>How do I Just Upload My Script?</h2>
+
+<p>
+  Just do it. But within your distribution place the script
+  in the <code>lib/script</code> directory. If you are going to
+  upload a greasemonkey script consider putting it in
+  <code>lib/script/gm</code>, for example. Your code may just be
+  included using [% "<script>" | html %] tags, and that's okay!
+</p>
+
+<h2>Why Haven't You Completed Feature <em>X</em> For this Community?</h2>
+
+<p>
+  Because I haven't had time to get there yet. Please consider
+  <a href="/community/svn.html">contributing</a> or at least
+  <a href="/community/rt.html">mentioning</a> the features you would
+  like.
+</p>
+
+<h2>What's Wrong with Just Using the [% "<script>" | html %] Tag?</h2>
+
+<p>
+  Nothing.
+</p>
+
+<h1>Working on OpenJSAN</h1>
+
+<h2>How do I help?</h2>
+
+<p>
+  Fix something, add something, create something, and
+  <a href="/community/svn.html">commit it!</a>
+</p>
+

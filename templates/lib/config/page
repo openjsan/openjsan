@@ -1,0 +1,13 @@
+[%
+    USE Date;
+    
+    page = {
+        file       = template.name,
+        title      = template.title,
+        pagetitle  = template.pagetitle or template.title,
+        about      = template.about,
+        type       = template.type or 'html',
+        logo       = template.logo or 'jsan-logo-rhino',
+        date       = template.date or Date.format(template.modime)
+    };
+-%]

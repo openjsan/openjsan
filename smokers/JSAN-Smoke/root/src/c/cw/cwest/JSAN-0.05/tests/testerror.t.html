@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/JSAN.js"></script>
+  </head>
+  <body>
+    <pre id="test"><script>
+        var jsan = new JSAN('lib');
+        jsan.use('Test.Simple');
+
+        plan({tests: 4});
+        ok(JSAN.errorLevel == "none", 'default error level none');
+        
+        jsan.use('Test.Moore');
+        ok(JSAN.errorMessage.length > 1, 'message propigated');
+
+        JSAN.errorLevel = "die";
+
+        try {
+            jsan.use('Test.Moore');
+        } catch (e) {
+            ok(/File not found/.test(JSAN.errorMessage), 'message propigated');
+            ok(/File not found/.test(e.message), 'message propigated through e');
+        }
+    </script></pre>
+  </body>
+</html>

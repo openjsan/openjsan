@@ -1,0 +1,14 @@
+<h2>Tag [% tag.name %]</h2>
+
+<table class="dist-listing">
+  <tr>
+    <th>Distribution</th>
+    <th>Version</th>
+  </tr>
+[% FOREACH dist IN dists %]
+  <tr>
+    <td><a href="/doc/[% dist.author.hash %]/[% dist.name.replace('\.','/') %]/[% dist.version %]">[% dist.name %]</a></td>
+    <td>[% dist.version %]</td>
+  </tr>
+[% END %]
+</table>

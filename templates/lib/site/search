@@ -1,0 +1,53 @@
+
+<script type="text/javascript">
+// <![CDATA[
+  JSAN.use('HTTP.Query');
+  var query = new HTTP.Query(location.search);
+  var list  = [ 'q', 'a', 'l', 'd', 'r' ];
+  
+  for (var i = 0; i < list.length; i++) {
+      if (query.get(list[i])) {
+          document.write('<p>No match found for <em>' + query.get(list[i]) + '<\/em>.<\/p>');
+      }
+  }
+  
+  function fixType () {
+      if (query.get('t')) {
+          var type = document.getElementById('search-form').t;
+          for (var i = 0; i < type.options.length; i++ ) {
+              var option = type.options[i];
+              if (option.value == query.get('t')) {
+                  type.selectedIndex = i;
+              }
+          }
+      }
+   }
+// ]]>
+</script>
+
+<form action="/go" id="search-form">
+    <fieldset class="standard-form">
+        <legend>Search JSAN</legend>
+
+<p><a href="/tag/index.html">View the Tag Cloud</a></p>
+
+        <label for="t">Search
+        <select name="t" id="t">
+          <option value="a">Authors</option>
+          <option value="l">Libraries</option>
+          <option value="d">Distributions</option>
+          <option value="r">Releases</option>
+        </select>
+	</label>
+        <label for="q">For
+        <input type="text" name="q" id="q" value="" />
+	</label>
+        <input type="submit" class="submit" value="Go" />
+    </fieldset>
+</form>
+
+<script type="text/javascript">
+// <![CDATA[
+  fixType()
+// ]]>
+</script>

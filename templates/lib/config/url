@@ -1,0 +1,10 @@
+[%
+    site.url = {
+        root   = rooturl,
+        home   = "${rooturl}index.html",
+        jause  = "${rooturl}jause",
+        images = "${rooturl}images",
+        css    = "${rooturl}style.css",
+        js     = "${rooturl}js",
+    };
+-%]

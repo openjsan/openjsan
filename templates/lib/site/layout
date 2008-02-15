@@ -1,0 +1,11 @@
+[% PROCESS site/header -%]
+
+<div id="main">
+  [% PROCESS site/navigation -%]
+
+  <div id="content">
+    [% content %]
+  </div>
+</div>
+
+[% PROCESS site/footer -%]

@@ -1,0 +1,33 @@
+<h1><a href="/doc/[% dist.author.hash %]">[% dist.author.name %]</a> - [% dist.name %] - [% dist.version %]</h1>
+
+<p>
+  [<a href="[% download %]">Download</a>]
+  [<a href="[% source %]">Browse Source</a>]
+  [% IF harness %]
+  [<a href="[% harness %]">Run Test Harness</a>]
+  [% END %]
+  [% IF readme %]
+  [<a href="[% readme %]">README</a>]
+  [% END %]
+  [% IF changes %]
+  [<a href="[% changes %]">Changes</a>]
+  [% END %]
+  [% IF meta %]
+  [<a href="[% meta %]">META</a>]
+  [% END %]
+</p>
+
+<h2>Libraries</h2>
+
+<table class="library-listing">
+  <tr>
+    <th>Library</th>
+    <th>Version</th>
+  </tr>
+[% FOREACH ns IN dist.namespaces %]
+  <tr>
+    <td><a href="[% ns.filename.replace('.js', '.html') %]">[% ns.name %]</td>
+    <td>[% ns.version %]</td>
+  </tr>
+[% END %]
+</table>

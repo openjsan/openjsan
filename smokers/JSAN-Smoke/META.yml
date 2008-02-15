@@ -1,0 +1,8 @@
+--- #YAML:1.0
+name: JSAN-Smoke
+version: 0.01
+author:
+  - Rob Kinyon
+abstract: Catalyst based application
+license: perl
+generated_by: Module::Build version 0.2611, without YAML.pm

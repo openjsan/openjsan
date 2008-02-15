@@ -1,0 +1,16 @@
+<h1>[% author.login %] - [% author.name %]</h1>
+
+<h2>Distributions</h2>
+
+<table class="dist-listing">
+  <tr>
+    <th>Distribution</th>
+    <th>Version</th>
+  </tr>
+[% FOREACH dist IN dists %]
+  <tr>
+    <td><a href="[% dist.name.replace('\.', '/') %]/[% dist.version %]">[% dist.name %]</td>
+    <td>[% dist.version %]</td>
+  </tr>
+[% END %]
+</table>

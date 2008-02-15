@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/JSAN.js"></script>
+  </head>
+  <body>
+    <pre id="test"><script>
+        var jsan = new JSAN('lib');
+        // We're kind of relying on this right here...
+        JSAN.use('Test.Builder');
+        var test = new Test.Builder();
+        test.plan({tests: 1});
+        test.ok(typeof(test) == 'object', 'Loaded proper class.');
+    </script></pre>
+  </body>
+</html>

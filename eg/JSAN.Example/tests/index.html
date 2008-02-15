@@ -1,0 +1,16 @@
+<html>
+<head>
+  <script type="text/javascript" src="lib/JSAN.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    // Harness example using JSAN
+    var jsan = new JSAN('lib');
+    jsan.use('Test.Harness.Browser');
+
+    new Test.Harness.Browser().runTests(
+        "use.html"
+    );
+</script>
+</body>
+</html>

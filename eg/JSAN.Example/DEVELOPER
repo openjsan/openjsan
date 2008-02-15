@@ -1,0 +1,30 @@
+=head1 Where do I Start?
+
+Install the Perl module Module::Build from CPAN.
+
+  sudo perl -MCPAN -e'install "Module::Build"'
+
+You very much need to rename the directories and files
+to fit your distribution's name and set of libraries.
+
+Start by renaming the JSAN.Example directory to "Your.Namespace".
+
+You will have to rename the test files. You will probably
+have to download and import Test.Simple into tests/lib as well.
+
+You will have to write your code, probably replacing all the
+function and method names in JSAN.Example.
+
+You will have to rewrite the documentation to contain
+your name and information.
+
+You will need to alert Build.PL to contain the proper
+information for your distribution.
+
+You may choose to remove this document, however you don't have to.
+
+=head1 How do I Package this for JSAN?
+
+  perl Build.PL
+  ./Build manifest
+  ./Build dist

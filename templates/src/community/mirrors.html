@@ -1,0 +1,169 @@
+[% META title = 'Community - Mirrors' %]
+
+[%
+    mirrors = [
+        {
+            name   = 'Master Sites',
+            sites  = [
+                {
+                    site     = 'http://openjsan.org',
+                    country  = 'Official Master Site',
+                    owner    = 'Casey West <casey@geeknest.com>',
+                },
+                {
+                    site     = 'http://jsan.caseywest.com',
+                    country  = 'Backup Master Site',
+                    owner    = 'Casey West <casey@geeknest.com>',
+                },
+                {
+                    site     = 'http://back.openjsan.org',
+                    country  = 'Official Backup and Archival Site',
+                    owner    = 'David Wheeler <david@kineticode.com>',
+                },
+            ],
+        },
+        {
+            name   = 'Asia',
+            sites  = [
+                {
+                    site     = 'http://jsan.jp',
+                    country  = 'Japan, Tokyo',
+                    owner    = 'Tatsuhiko Miyagawa <miyagawa@gmail.com>',
+                },
+                {
+                    site     = 'http://jsan.nc.cyut.edu.tw',
+                    country  = 'Taiwan, Taichung City (IPv6 support)',
+                    owner    = 'edwardc <edwardchuang@gmail.com>',
+                },
+                {
+                    site     = 'http://jsan.stu.edu.tw',
+                    country  = 'Taiwan, Kaousiung City',
+                    owner    = 'ychsiao <ychsiao@mail.stu.edu.tw>',
+                },
+            ],
+        },
+        {
+            name   = 'Europe',
+            sites  = [
+                {
+                    site     = 'http://www.jsan.de',
+                    country  = 'Germany, Munich',
+                    owner    = 'Roland Moriz <roland@moriz.de>',
+                },
+                {
+                    site     = 'http://jsan.log.pt',
+                    country  = 'Portugal, Lisbon',
+                    owner    = 'Jose Alves de Castro <cog@cpan.org>',
+                },
+                {
+                    site     = 'http://jsan.davecardwell.co.uk',
+                    country  = 'United Kingdom, London',
+                    owner    = 'Dave Cardwell <jsan@davecardwell.co.uk>',
+                },
+                {
+                    site     = 'http://jsan.clueball.com',
+                    country  = 'United Kingdom',
+                    owner    = 'Pete Sergeant <pete@clueball.com>',
+                },
+            ],
+        },
+        {
+            name   = 'Middle East',
+            sites  = [
+                {
+                    site     = 'http://jsan.woobling.org',
+                    country  = 'Israel',
+                    owner    = 'Yuval Kogman <nothingmuch@woobling.org>',
+                },
+            ],
+        },
+        {
+            name   = 'North America',
+            sites  = [
+                {
+                    site     = 'http://jsan.develooper.com',
+                    country  = 'United States, California',
+                    owner    = 'Ask Hansen <ask@develooper.com>',
+                },
+                {
+                    site     = 'http://pair.openjsan.org',
+                    country  = 'United States, Pennsylvania',
+                    owner    = 'Casey West <casey@geeknest.com>',
+                },
+                {
+                    site     = 'http://jsan.mirrors.playboy.com',
+                    country  = 'United States, Illinois',
+                    owner    = 'Brian Moyles <bmoyles@playboy.com>',
+                },
+                {
+                    site     = 'http://jsan.phunnel.org',
+                    country  = 'United States, Texas',
+                    owner    = 'John Cap <john@apt202.net>',
+                },
+            ],
+        },
+    ];
+#(1) Africa
+#(2) Asia
+#(3) Central America
+#(4) Europe
+#(5) North America
+#(6) Oceania
+#(7) South America
+-%]
+
+<h1>Hosting a Mirror</h1>
+
+<p>
+  Hosting a mirror is simple. You need rsync, some disk space, bandwidth, and a hostname.
+  JSAN currently must run under a hostname such as "subdomain.example.com". Directory
+  Indexes should be turned on for the "dist/" location. Please do not sync more than
+  once every hour. And realistically you only need to sync once or twice a day.
+</p>
+
+<p>
+  To mirror JSAN run the following rsync command from cron. Change "/usr/local/jsan"
+  to your document root for the JSAN mirror host.
+</p>
+
+<pre>
+rsync -avz --delete rsync://master.openjsan.org/jsan /usr/local/jsan
+</pre>
+
+<p>
+  If you want to use your own logo at the bottom of the page, save it to
+  <code>/usr/local/jsan/images/mirror/logo.png</code> and rsync with this instead:
+</p>
+
+<pre>
+rsync -avz --delete --exclude=/images/mirror/logo.png \
+    rsync://master.openjsan.org/jsan /usr/local/jsan
+</pre>
+
+<p>
+  If you want to use your own logo at the bottom of the page, and you want the
+  ability to link to it, or make some other reasonable modification, you can
+  create a JavaScript file that will write your logo and associated HTML inline.
+  Re-write <code>/usr/local/jsan/js/script/mirror.js</code> and rsync with this
+  instead:
+</p>
+
+<pre>
+rsync -avz --delete --exclude=/js/script/mirror.js \
+    rsync://master.openjsan.org/jsan /usr/local/jsan
+</pre>
+
+<p>
+  Next, send email to the <a href="lists.html#jsan-devel">JSAN Development</a>
+  list and tell us what the host is, who you are, and what country your mirror
+  is in. If your world region is not represented in the list then we need you!
+</p>
+
+[% FOREACH region IN mirrors -%]
+<h1>[% region.name %]</h1>
+ <ul>
+  [% FOREACH mirror IN region.sites -%]
+    <li><a href="[% mirror.site %]">[% mirror.site %]</a> ([% mirror.country %])</li>
+  [% END -%]
+ </ul>
+[% END -%]

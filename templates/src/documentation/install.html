@@ -1,0 +1,68 @@
+[% META title = 'Documentation - Installing JSAN Code' %]
+
+<h1>Installing JSAN Libraries Locally</h1>
+
+<h2>Installing the JSAN Shell</h2>
+
+<p>
+  The JSAN Shell can be used to ease the installation of JSAN code.
+  It is distributed on CPAN, but you can also download it here.
+</p>
+
+<p>
+  <a href="JSAN-0.07.tar.gz">Download the JSAN Shell</a>
+</p>
+
+<p>
+  However, it is recommended that you install this software from CPAN
+  because the CPAN shell will manage the Perl module dependencies
+  required to get your shell to run. To install from CPAN, run the following
+  shell command.
+</p>
+
+<pre>
+perl -MCPAN -e'install "JSAN"'
+</pre>
+
+<h2>Updating your JSAN Index</h2>
+
+<p>
+You must run the <em>index</em> command. Run the following shell command.
+</p>
+
+<pre>
+jsan index
+</pre>
+
+<h2>Installing Libraries</h2>
+
+<p>
+  Now you're ready to install some JSAN libraries.
+</p>
+
+<p>
+  The JSAN Shell does not assume a particular location for installing JSAN
+  libraries. You must specify your installation prefix or JSAN won't
+  install anything. There are two ways to do that. The first is with
+  the <code>--prefix</code> option. The second is by setting the
+  <code>JSAN_PREFIX</code> environment variable. Here are examples of each.
+  The environment example is based on valid Bash Shell syntax.
+</p>
+
+<pre>
+jsan --prefix=/usr/local/js
+JSAN_PREFIX=/usr/local/js jsan
+</pre>
+
+<p>
+Now run the install command. This time I'm using the <code>-p</code>
+prefix option short cut.
+</p>
+
+<pre>
+shell> jsan -p /usr/local/js install JSAN
+/dist/c/cw/cwest/JSAN-0.04.tar.gz -> /tmp/xkAU2XT95W/JSAN-0.04.tar.gz
+Unpacking JSAN-0.04.tar.gz
+Installing libraries to /usr/local/js
+</pre>
+

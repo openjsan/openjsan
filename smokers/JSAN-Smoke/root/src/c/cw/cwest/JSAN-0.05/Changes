@@ -1,0 +1,26 @@
+2005-07-12      v0.05
+
+  - Fixed a bug with the auto-loading of include paths (Garrett Rooney).
+
+2005-07-10      v0.04
+
+  - Documentation typo fixes (Marshall Roch)
+  - Documentation POD fix (Garrett Rooney)
+
+2005-07-08      v0.03
+
+
+  - Added JSAN.use() method for much easier use.
+  - JSAN will now auto detect some library paths, which are,
+    in order of paths attempted.
+    - The path that JSAN.js was loaded from in the <script> tag, if available.
+    - '.',
+    - 'lib'
+  - Fixed docs to show proper Test.Simple use.
+  - INCOMPATIBLE: Moved addRepository() to a class method instead of instance
+    method.
+
+
+2005-07-03      v0.02
+
+  - Intial useful public release.

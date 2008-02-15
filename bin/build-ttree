@@ -1,0 +1,1 @@
+ttree -a -f etc/ttree.cfg -d $WHERE

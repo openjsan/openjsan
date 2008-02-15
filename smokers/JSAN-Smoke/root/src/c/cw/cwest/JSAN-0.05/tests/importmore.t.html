@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/JSAN.js"></script>
+  </head>
+  <body>
+    <pre id="test"><script>
+        var jsan = new JSAN('lib');
+        jsan.use('Test.More', 'plan', 'ok', 'is');
+
+        plan({tests: 1});
+        ok(1 == 1, '1 is okay');
+    </script></pre>
+  </body>
+</html>

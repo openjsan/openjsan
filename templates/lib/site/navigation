@@ -1,0 +1,44 @@
+<div id="navigation">
+  <ul>
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/news/index.html">News</a></li>
+    <li><a href="/faq/index.html">FAQ</a></li>
+    <li><a href="/documentation/index.html">Documentation</a>
+    [% IF page.file.search('^documentation/') %]
+      <ul>
+        <li><a href="http://master.openjsan.org/documentation/wiki/index.cgi">Wiki</a></li>
+        <li><a href="/documentation/dists.html">Distributions</a></li>
+        <li><a href="install.html">Installation</a></li>
+        <li><a href="/documentation/roadmap.html">Road Map</a></li>
+        [% IF 0 %]
+          <li><a href="/documentation/classes.html">Writing Classes</a></li>
+          <li><a href="/documentation/functions.html">Writing Functions</a></li>
+        [% END %]
+      </ul>
+     [% END %]
+    </li>
+    <li><a href="/community/index.html">Community</a>
+    [% IF page.file.search('^community/') %]
+      <ul>
+        <li><a href="/community/lists.html">Mailing Lists</a></li>
+        <li><a href="/community/mirrors.html">Mirrors</a></li>
+        <li><a href="http://planet.openjsan.org">Planet JavaScript</a></li>
+        <li><a href="/community/svn.html">Subversion</a></li>
+        <li><a href="/community/rt.html">Request Tracker</a></li>
+        <li><a href="/community/promote.html">Promote</a></li>
+      </ul>
+    [% END %]
+    </li>
+    <li><a href="[% jsan.config.get('jause') %]">Contribute</a>
+    [% IF page.file.search('^jause/') %]
+      <ul>
+        <li><a href="javascript:disp.showOnlyElement('new-account');">Register</a></li>
+        <li><a href="javascript:disp.showOnlyElement('login-account');">Login</a></li>
+        <li><a href="javascript:disp.showOnlyElement('upload-dist');">Upload</a></li>
+      </ul>
+     [% END %]
+    </li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+</div>
+

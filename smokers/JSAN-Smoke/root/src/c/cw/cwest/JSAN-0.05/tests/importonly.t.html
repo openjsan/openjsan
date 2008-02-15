@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/JSAN.js"></script>
+  </head>
+  <body>
+    <pre id="test"><script>
+        var jsan = new JSAN('lib');
+
+        jsan.use('Test.Simple', 'plan');
+        var test = new Test.Builder();
+        test.plan({tests: 2});
+        test.ok(typeof(plan) == 'function', 'Loaded plan function.');
+        try       { ok }
+        catch (e) { test.ok(e.name == 'ReferenceError', 'Did not load ok function.') }
+    </script></pre>
+  </body>
+</html>

@@ -1,0 +1,208 @@
+[% META title = 'JavaScript Authors Upload Server' %]
+[% META pagetitle = '<span class="mark">J</span>avaScript <span class="mark">A</span>uthors <span class="mark">U</span>pload <span class="mark">Se</span>rver' %]
+[% META logo  = 'jause-logo-shark' %]
+
+[*
+  USE cgi    = CGI;
+  USE jsan   = JSAN.Server;
+
+  error = '';
+  show  = 'jause-home';
+  login = '';
+  user  = {};
+  IF cgi.param('new-account');
+      show = 'new-account';
+      create = jsan.account_create(
+          login => cgi.param('login'),
+          name  => cgi.param('name'),
+          pass  => cgi.param('pass'),
+          pass2 => cgi.param('pass2'),
+          email => cgi.param('email'),
+          url   => cgi.param('url'),
+      );
+      IF create.error;
+          error = create.error;
+      END;
+  ELSIF cgi.param('login-account');
+      show = 'login-account';
+      in = jsan.login(
+          login => cgi.param('login'),
+          pass  => cgi.param('pass'),
+      );
+      IF in.error;
+          error = in.error;
+      ELSE;
+          user  = jsan.user_info(id => in.id).account;
+          login = in.seed;
+      END;
+  ELSIF cgi.param('upload-dist');
+      show     = 'upload-dist';
+      uploaded = jsan.upload_dist(
+          files => [ { filename => cgi.param('dist') } ],
+          seed  => cgi.cookie('key'),
+      );
+      IF uploaded.error;
+          error = uploaded.error;
+      END;          
+  END;
+
+-*]
+
+<script type="text/javascript">
+    JSAN.use('HTTP.Cookies');
+    var disp  = new DOM.Display();
+    var error = unescape('[* cgi.escape(error) *]');
+    var show  = '[* show *]';
+
+    function _initPage () {
+        document.getElementById('show-error').innerHTML = error;
+        disp.hideElement('show-error');
+        disp.hideElement('show-success');
+        disp.hideElement('new-account');
+        disp.hideElement('login-account');
+        disp.hideElement('logout-account');
+        disp.hideElement('upload-dist');
+        disp.showOnlyElement('jause-home');
+        if (show == 'new-account') createUser();
+        if (show == 'login-account') loginUser();
+        if (show == 'upload-dist') uploadDist();
+        
+        if (self.location.hash == '#upload-complete') uploadDist();
+
+        var login_stat = new DOM.Display;
+        if ( '[* user.login *]'.length > 0 ) {
+            login_stat.showElement('login-status');
+        } else {
+            login_stat.hideElement('login-status');
+        }
+
+    }
+
+    function createUser () {
+        if (error.length > 0) {
+            disp.showOnlyElement('show-error');
+            disp.showElement('new-account');
+        } else {
+            showSuccess("Your account has been created.");
+            disp.showOnlyElement('show-success');
+        }
+    }
+    
+    function loginUser (form) {
+        if (error.length > 0) {
+            disp.showOnlyElement('show-error');
+            disp.showElement('login-account');
+        } else {
+            showSuccess("You are logged in.");
+            disp.showOnlyElement('show-success');
+            setKey('[* login *]');
+        }
+    }
+    
+    function setKey (key) {
+        var cookies = new HTTP.Cookies;
+        cookies.write('key', key, '+1M', '/');
+    }
+    
+    function showSuccess (msg) {
+        document.getElementById('show-success').innerHTML = msg;
+    }
+    
+    function uploadDist () {
+        if (error.length > 0) {
+            
+            disp.showOnlyElement('show-error');
+            disp.showElement('upload-dist');
+        } else {
+            showSuccess("Distribution uploaded and will be processed later.");
+            disp.showOnlyElement('show-success');
+        }
+    }
+    
+    function logOut () {
+        var cookies    = new HTTP.Cookies;
+        var login_stat = new DOM.Display;
+        cookies.remove('key');
+        login_stat.hideElement('login-status');
+    }
+</script>
+
+<div id="login-status">
+  Logged In as [* user.login *] (<a href="javascript:logOut();">logout</a>).
+</div>
+
+<div id="show-error">[* cgi.param('error') *]</div>
+
+<div id="show-success">
+</div>
+
+<div id="jause-home">
+  <p>
+    Welcome to the JavaScript Authors Upload Server (JAUSE).
+  </p>
+</div>
+
+<div id="new-account">
+  <form id="new-account-form" method="post">
+    <fieldset class="standard-form">
+      <legend>Apply for a JAUSE Account</legend>
+
+      <label for="login">JAUSE ID
+      <input type="text" name="login" id="login" value="[* cgi.param('login') *]" />
+      </label>
+      <label for="pass">Password
+      <input type="password" name="pass" id="pass" value="[* cgi.param('pass') *]" />
+      </label>
+      <label for="pass2">Verify Password
+      <input type="password" name="pass2" id="pass2" />
+      </label>
+      <label for="name">Name
+      <input type="text" name="name" id="name" value="[* cgi.param('name') *]" />
+      </label>
+      <label for="email">Email Address
+      <input type="text" name="email" id="email" value="[* cgi.param('email') *]" />
+      </label>
+      <label for="url">Website URL
+      <input type="text" name="url" id="url" value="[* cgi.param('url') *]" />
+      </label>
+      <input type="submit" name="new-account" class="submit" value="Create" />
+    </fieldset>
+  </form>
+</div>
+
+<div id="login-account">
+  <form id="login-account-form" method="post">
+    <fieldset class="standard-form">
+      <legend>Login to JAUSE</legend>
+      <label for="loginlogin">JAUSE ID
+      <input type="text" name="login" id="loginlogin" value="[* cgi.param('login') *]" />
+      </label>
+      <label for="loginpass">Password
+      <input type="password" name="pass" id="loginpass" />
+      </label>
+      <input type="submit" name="login-account" class="submit" value="Login" />
+    </fieldset>
+  </form>
+</div>
+
+<div id="upload-dist">
+  <form id="upload-dist-form" method="post" enctype="multipart/form-data">
+    <fieldset class="standard-form">
+      <legend>Upload Distribution</legend>
+      <label for="dist">File
+      <input type="file" name="dist" id="dist" />
+      </label>
+      <input type="submit" name="upload-dist" class="submit" value="Upload" />
+    </fieldset>
+  </form>
+</div>
+
+<div id="logout-account">
+    <p>
+      You have been logged out.
+    </p>
+</div>
+
+<script type="text/javascript">
+    _initPage();
+</script>

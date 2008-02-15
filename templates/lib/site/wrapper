@@ -1,0 +1,8 @@
+[%
+    SWITCH page.type;
+        CASE 'html';
+            PROCESS $template WRAPPER site/html + site/layout;
+        CASE;
+            content;
+    END;
+-%]

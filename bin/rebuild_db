@@ -1,0 +1,72 @@
+#!/usr/bin/perl
+
+use YAML qw(LoadFile);
+    
+  my $jsan = LoadFile($self->htdocs . '/index.yaml', $index);
+
+  my ($self) = @_;
+
+  my $index = {
+      authors       => {},
+      distributions => {},
+      libraries     => {},
+  };
+
+  foreach my $author ( $self->jsan->data->author->retrieve_all ) {
+      my $author_hash = join '/', reverse $author->login =~ /(((.).).+)/;
+      $author->hash($author_hash) and $author->update unless $author->hash;
+
+      my @dists = $author->distributions;
+      next unless @dists;
+      $index->{authors}->{$author->login} = {
+          name     => $author->name,
+          email    => $author->email,
+          url      => $author->url,
+          doc      => '/doc/' . $author->hash,
+      };
+
+      foreach my $dist ( @dists ) {
+          my $name = $dist->name;
+
+          next unless $dist->name; # unprocessed distribution in database
+          $index->{distributions}->{$name}->{doc} =  '/doc/' . $author->hash . '/' . join('/',split /\./,$dist->name);
+
+          $index->{distributions}->{$name}->{releases} = []
+            unless $index->{distributions}->{$name}->{releases};
+
+          my ($latest) = (
+              map  { $_->[1] }
+              sort { $a->[0] <=> $b->[0] }
+              map  { [ qv($_->version) => $_ ] }
+              $self->jsan->data->distribution->search(name => $name)
+          )[-1];
+
+          my ($meta_text, $type) = $self->_get_meta($dist);
+          push @{ $index->{distributions}->{$name}->{releases} }, {
+              version  => $dist->version,
+              author   => $author->login,
+              source   => '/dist/' . $author->hash . '/' . $dist->filename,
+              doc      => '/doc/' . $author->hash . '/' . join('/',split /\./,$dist->name) . '/' . $dist->version,
+              created  => $dist->cdate,
+              checksum => $dist->checksum,
+              latest   => ($dist == $latest ? 1 : 0),
+              meta     => $meta_text,
+              srcdir   => $dist->srcdir,
+          };
+          
+          if ($dist == $latest) {
+              foreach my $lib ( $dist->namespaces ) {
+                  $index->{libraries}->{$lib->name} = {
+                      version              => $lib->version,
+                      distribution_name    => $dist->name,
+                      distribution_version => $dist->version,
+                      author               => $author->login,
+                      doc                  => '/doc/' . $author->hash . '/' . join('/',split /\./,$dist->name) . '/' . $dist->version . '/lib/' . join('/', split /\./, $lib->name) . '.html',
+                  };
+              }
+          }
+      }
+  }
+
+
+

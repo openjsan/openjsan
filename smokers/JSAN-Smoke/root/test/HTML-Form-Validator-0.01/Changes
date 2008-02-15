@@ -1,0 +1,7 @@
+Revision history for JavaScript class HTML.Form.Validator.
+
+0.01 
+    - code updated to "modern" javascript (the original was written in 2002)
+    - namespace HTML.Form.Validator added
+    - tests added
+    - documentation converted to POD and enhanced

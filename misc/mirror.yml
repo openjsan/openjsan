@@ -1,0 +1,20 @@
+---
+name: JavaScript Archive Network
+uri: http://openjsan.org/
+timestamp: 2007-01-15T21:17:52Z
+benchmark: benchmark/random100k.txt
+mirrors:
+  - uri: http://jsan.caseywest.com/
+  - uri: http://back.openjsan.org/
+  - uri: http://jsan.jp/
+  - uri: http://jsan.nc.cyut.edu.tw/
+  - uri: http://jsan.stu.edu.tw/
+  - uri: http://www.jsan.de/
+  - uri: http://jsan.log.pt/
+  - uri: http://jsan.davecardwell.co.uk/
+  - uri: http://jsan.clueball.com/
+  - uri: http://jsan.woobling.org/
+  - uri: http://jsan.develooper.com/
+  - uri: http://pair.openjsan.org/
+  - uri: http://jsan.mirrors.playboy.com/
+  - uri: http://jsan.phunnel.org/

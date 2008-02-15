@@ -1,0 +1,28 @@
+[% PERL %]
+    use HTML::TagCloud;
+    use version;
+
+    my %dists;
+    my @dists = grep { $_->name }
+                sort { qv($a->version) <=> qv($b->version) }
+                     $stash->get('jsan')->data->distribution->retrieve_all;
+    $dists{$_->name} = $_ for @dists;
+    @dists = values %dists;
+
+    my $cloud = HTML::TagCloud->new;
+
+    my %tags;
+    foreach my $dist (@dists) {
+        $tags{$_->name}++ for $dist->tags;
+    }
+    
+    foreach my $tag ( keys %tags ) {
+        $cloud->add($tag, "/tag/$tag", $tags{$tag});
+    }
+    
+    $stash->set('cloud', $cloud->html);
+[% END %]
+
+<div>
+  [% cloud %]
+</div>

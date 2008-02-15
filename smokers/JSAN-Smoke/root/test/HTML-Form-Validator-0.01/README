@@ -1,0 +1,19 @@
+This is the README file for HTML.Form.Validator.
+================================================
+
+DEPENDENCIES
+
+This module requires no other modules and libraries to run, but it
+doe require the following modules to build and test:
+
+	Test.Simple 
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2005 Infinity Interactive, Inc.
+
+http://www.iinteractive.com
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl. 
+

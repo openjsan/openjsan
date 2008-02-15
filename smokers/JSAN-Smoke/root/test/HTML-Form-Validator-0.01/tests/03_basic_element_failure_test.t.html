@@ -1,0 +1,48 @@
+<html>
+<head>
+    <script type="text/javascript" src="../inc/Test/Builder.js"></script>
+    <script type="text/javascript" src="../inc/Test/More.js"></script>
+
+    <script type="text/javascript" src="../lib/HTML/Form/Validator.js"></script>
+    <script type="text/javascript" src="../lib/HTML/Form/Validator/Element.js"></script>        
+</head>
+<body>
+<FORM NAME='form1'>
+<INPUT TYPE='hidden' name='element2' />
+</FORM>
+<pre id='test'><script type="text/javascript">
+
+plan({ tests: 11 });
+
+// Tests with a failure though
+
+var validator2 = new HTML.Form.Validator('form1');
+isaOK(validator2, 'HTML.Form.Validator');
+
+is(validator2.form_name, 'form1', '... got the correct form name');
+is(validator2.elements.length, 0, '... we have no elements in the validator yet');
+
+// create a single element
+var my_error;
+var my_error_handler = function (error) { my_error = error; };
+
+var element2 = new HTML.Form.Validator.Element('element2', 'error!', my_error_handler);
+isaOK(element2, 'HTML.Form.Validator.Element');
+
+is(element2.name, 'element2', '... got the right element name');
+is(element2.error, 'error!', '... got the right element error message');
+is(element2.error_handler, my_error_handler, '... got the right error handler');
+
+// add it to the validator
+validator2.addElement(element2);
+
+is(validator2.elements.length, 1, '... we have 1 element in the validator now');
+is(validator2.elements[0], element2, '... and it is the element2');
+
+// and validate
+ok(!validator2.validate(), '... the form did not validate successfully');
+is(my_error, 'error!', '... there was a error, and the error handler caught it');
+
+</script></pre>
+</body>
+</html>

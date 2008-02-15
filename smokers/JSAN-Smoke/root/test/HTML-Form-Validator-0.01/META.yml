@@ -1,0 +1,10 @@
+---
+name: HTML.Form.Validator
+version: 0.01
+author:
+  - Stevan Little <stevan@iinteractive.com>
+abstract: An HTML Form validation framework
+license: perl
+provides: {}
+build_requires:
+    Test.Simple:    0.10

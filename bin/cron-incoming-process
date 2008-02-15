@@ -1,0 +1,5 @@
+perl bin/incoming-processor;
+make;
+perl bin/create-sqlite-index;
+perl bin/site-level-processor;
+

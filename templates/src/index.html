@@ -1,0 +1,53 @@
+[% META title      = 'Home' %]
+[% META pagetitle = '<span class="mark">J</span>ava<span class="mark">S</span>cript <span class="mark">A</span>rchive <span class="mark">N</span>etwork' %]
+
+<div id="slogan">"CPAN".replace(/CP/, "JS")</div>
+
+<p>
+  JavaScript Archive Network is a comprehensive resource for Open Source
+  JavaScript libraries and software.
+</p>
+
+<div class="columns">
+<div class="column">
+<h1>Connect</h1>
+<ul>
+  <li><a href="/documentation">Documentation</a>: <a href="http://master.openjsan.org/documentation/wiki/index.cgi">Wiki</a>, <a href="/faq">FAQ</a>.</li>
+  <li><a href="/community">Community</a>: <a href="/community/lists.html">Mailing Lists</a>, <a href="/community/rt.html">RT</a>, <a href="irc://irc.freenode.net/jsan">IRC</a>, <a href="http://planet.openjsan.org/">Planet</a>.</li>
+  <li><a href="/community/svn.html">Code</a>: <a href="http://cia.navi.cx/stats/project/jsan">CIA</a>.</li>
+</ul>
+
+[% INCLUDE news/index.html | replace('__END__(.|\n)+', ' -->') %]
+<p>
+<a href="news/index.html">Previous News</a>
+</p>
+<p>
+  <a href="http://cia.navi.cx/stats/project/jsan/.rss"><img src="/images/util/rss.gif" alt="SVN Commits RSS" /></a>
+  <a href="http://cia.navi.cx/stats/project/jsan/.rss">SVN Commits Feed</a>
+</p>
+</div>
+<div class="column">
+
+<h1>Search</h1>
+
+[% INCLUDE site/search %]
+
+<h1>Distributions <a href="recent.rss"><img src="/images/util/rss.gif" alt="RSS" /></a></h1>
+
+[% PERL %]
+    use version;
+    my %dists;
+    my @dists = grep { $_->name }
+                sort { qv($a->version) <=> qv($b->version) }
+                     $stash->get('jsan')->data->distribution->retrieve_all;
+    $dists{$_->name} = $_ for @dists;
+    $stash->set(dists => [values %dists]);
+[% END %]
+
+<p>
+[% FOREACH dist IN dists.nsort('cdate').reverse %]
+   <a href="doc/[% dist.author.hash %]/[% dist.name.replace('\.', '/') %]/[% dist.version %]/index.html">[% dist.name %]-[% dist.version %]</a><br />
+[% END %]
+</p>
+</div>
+</div>
