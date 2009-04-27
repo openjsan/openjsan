@@ -18,10 +18,10 @@ sub new {
     $conf->define("file|filelist|f=s@");
     $conf->file(
           $ENV{JSAN_DEV}
-        ? "/var/www/openjsan-dev/etc/jsan.cfg"
+        ? "/var/www/dev.openjsan.org/etc/jsan.cfg"
         :   -e "/var/www/master.openjsan.org/etc/jsan.cfg"
           ? "/var/www/master.openjsan.org/etc/jsan.cfg"
-          : "/var/www/openjsan-dev/etc/jsan.cfg"
+          : "/var/www/dev.openjsan.org/etc/jsan.cfg"
     );
     return $CONFIG = bless {
         conf   => $conf,
