@@ -12,11 +12,12 @@ our $CONFIG   = JSAN::Config->new;
 our $DEBUG  ||= 0;
 our $LOADER   = Class::DBI::Loader->new(
     debug         => $DEBUG,
-    dsn           => 'dbi:mysql:' . $CONFIG->get('db'),
+    dsn           => 'dbi:Pg:host=localhost;dbname=' . $CONFIG->get('db'),
     user          => $CONFIG->dbauth->{user},
     password      => $CONFIG->dbauth->{pass},
     namespace     => __PACKAGE__,
     relationships => 0,
+    options                 => { AutoCommit => 1 }, 
     additional_base_classes => 'JSAN::Data::Base',
 );
 
@@ -42,6 +43,11 @@ sub new {
     return $self;
 };
 
+sub table {
+    my ($self, $table) = @_;
+    return $LOADER->find_class($table);
+}
+
 $LOADER->find_class('seeds')->uuid_columns('seed');
 
 $LOADER->find_class('authors')->has_many(
@@ -59,11 +65,6 @@ $LOADER->find_class('distributions')->has_many(
     $LOADER->find_class('namespaces')
     => 'distribution'
 );
-
-sub table {
-    my ($self, $table) = @_;
-    return $LOADER->find_class($table);
-}
 
 $LOADER->find_class('seeds')->has_a(
     author => $LOADER->find_class('authors'),
