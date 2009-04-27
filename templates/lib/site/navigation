@@ -6,7 +6,7 @@
     <li><a href="/documentation/index.html">Documentation</a>
     [% IF page.file.search('^documentation/') %]
       <ul>
-        <li><a href="http://master.openjsan.org/documentation/wiki/index.cgi">Wiki</a></li>
+        <li><a href="http://wiki.github.com/openjsan/openjsan">Wiki</a></li>
         <li><a href="/documentation/dists.html">Distributions</a></li>
         <li><a href="install.html">Installation</a></li>
         <li><a href="/documentation/roadmap.html">Road Map</a></li>
@@ -23,8 +23,8 @@
         <li><a href="/community/lists.html">Mailing Lists</a></li>
         <li><a href="/community/mirrors.html">Mirrors</a></li>
         <li><a href="http://planet.openjsan.org">Planet JavaScript</a></li>
-        <li><a href="/community/svn.html">Subversion</a></li>
-        <li><a href="/community/rt.html">Request Tracker</a></li>
+        <li><a href="/community/code.html">Code</a></li>
+        <li><a href="http://github.com/openjsan/openjsan/issues">Todo</a></li>
         <li><a href="/community/promote.html">Promote</a></li>
       </ul>
     [% END %]
