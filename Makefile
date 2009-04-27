@@ -1,4 +1,4 @@
-ROOT  = ../../..
+ROOT  = ../..
 RSYNC = rsync -r --exclude=.svn
 TTREE = bin/build-ttree
 
