@@ -30,7 +30,8 @@ my $build = $class->new(
     module_name    => 'JSAN.Example',
     license        => 'perl',
     dist_author    => 'A. Thor <user@example.com>',
-    dist_version   => '0.01',
+    dist_version   => '0.02',
+    dist_abstract  => 'A Sample Lib',
     build_requires => {
         'Test.Simple' => '0.10',
     },
