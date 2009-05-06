@@ -41,7 +41,7 @@ sub account_create {
     my $author = $self->data->author->create({
         login    => lc($args->{login}),
         name     => $args->{name},
-        pass     => $args->{pass},
+        pass     => md5_hex($args->{pass}),
         email    => $args->{email},
         url      => $args->{url},
         approved => 1,
@@ -72,7 +72,7 @@ sub login {
     my $user = $self->data->author->search(login => $args->{login})->first;
 
     return { error => "Login incorrect" } unless $user && $seed;
-    return { error => "Login incorrect" } unless $args->{pass} eq $user->pass;
+    return { error => "Login incorrect" } unless md5_hex($args->{pass}) eq $user->pass;
 
     $seed->author($user);
     $seed->update;
