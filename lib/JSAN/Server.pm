@@ -9,7 +9,9 @@ use base qw[Class::Accessor::Fast];
 use Digest::MD5 qw[md5_hex];
 use IO::All;
 use Email::Address;
+use Email::Send;
 use File::Basename;
+use String::MkPasswd qw(mkpasswd);
 
 
 __PACKAGE__->mk_accessors(qw[data client_ip incoming config]);
@@ -78,6 +80,42 @@ sub login {
     $seed->update;
 
     return { seed => $seed->seed, id => $user->id };
+}
+
+sub password_recover {
+    my ($self, $args) = @_;
+
+    my $user = $self->data->author->search(login => $args->{login}, email => $args->{email})->first;
+
+    return { error => "No such user or email" } unless $user;
+
+    my $temp_pass = mkpasswd( -length => 13, );
+
+    my $message = <<"__MESSAGE__";
+To: $args->{email}
+From: admin\@openjsan.org
+Subject: OpenJSAN Author Login
+
+Recently you requested to have your password reset.
+
+Your password has been changed to: $temp_pass
+
+Please change this as soon as possible.
+
+Thanks for your support.
+
+__MESSAGE__
+
+    $message .= 'Login: ' . $self->config->get('jause') . "\n";
+
+    my $sender = Email::Send->new({mailer => 'SMTP'});
+    $sender->mailer_args([Host => 'localhost']);
+    $sender->send($message);
+
+    $user->pass(md5_hex($temp_pass));
+    $user->update;
+
+    return { };
 }
 
 sub get_seed {
