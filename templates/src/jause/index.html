@@ -47,9 +47,10 @@
   ELSIF cgi.param('password-change');
       show = 'password-change';
       in = jsan.password_change(
-          pass  => cgi.param('pass'),
-          pass2 => cgi.param('pass2'),
-          seed  => cgi.cookie('key'),
+          oldpass  => cgi.param('oldpass'),
+          pass     => cgi.param('pass'),
+          pass2    => cgi.param('pass2'),
+          seed     => cgi.cookie('key'),
       );
       IF in.error;
           error = in.error;
@@ -247,10 +248,13 @@
   <form id="password-change-form" method="post">
     <fieldset class="standard-form">
       <legend>Change Password</legend>
-      <label for="changepass">Password
+      <label for="changepassold">Old Password
+      <input type="password" name="oldpass" id="changepassold" />
+      </label>
+      <label for="changepass">New Password
       <input type="password" name="pass" id="changepass" />
       </label>
-      <label for="changepass2">Verify Password
+      <label for="changepass2">Verify New Password
       <input type="password" name="pass2" id="changepass2" />
       </label>
       <input type="submit" name="password-change" class="submit" value="Change" />

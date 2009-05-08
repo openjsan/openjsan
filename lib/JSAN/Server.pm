@@ -126,6 +126,7 @@ sub password_change {
     return { error => "Not logged in" } unless $seed;
     my $user = $seed->author;
     return { error => "No such user" } unless $user;
+    return { error => "Old password incorrect" } unless md5_hex($args->{oldpass}) eq $user->pass;
 
     return { error => "Passwords don't match" }
       if $args->{pass} ne $args->{pass2};
