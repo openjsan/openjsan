@@ -44,6 +44,16 @@
       IF in.error;
           error = in.error;
       END;
+  ELSIF cgi.param('password-change');
+      show = 'password-change';
+      in = jsan.password_change(
+          pass  => cgi.param('pass'),
+          pass2 => cgi.param('pass2'),
+          seed  => cgi.cookie('key'),
+      );
+      IF in.error;
+          error = in.error;
+      END;
   ELSIF cgi.param('upload-dist');
       show     = 'upload-dist';
       uploaded = jsan.upload_dist(
@@ -72,11 +82,13 @@
         disp.hideElement('logout-account');
         disp.hideElement('upload-dist');
         disp.hideElement('password-recover');
+        disp.hideElement('password-change');
         disp.showOnlyElement('jause-home');
         if (show == 'new-account') createUser();
         if (show == 'login-account') loginUser();
         if (show == 'upload-dist') uploadDist();
         if (show == 'password-recover') passwordRecover();
+        if (show == 'password-change') passwordChange();
         
         if (self.location.hash == '#upload-complete') uploadDist();
 
@@ -132,11 +144,19 @@
 
     function passwordRecover () {
         if (error.length > 0) {
-            
             disp.showOnlyElement('show-error');
             disp.showElement('password-recover');
         } else {
             showSuccess("New password emailed.");
+            disp.showOnlyElement('show-success');
+        }
+    }
+    function passwordChange () {
+        if (error.length > 0) {
+            disp.showOnlyElement('show-error');
+            disp.showElement('password-change');
+        } else {
+            showSuccess("Password changed.");
             disp.showOnlyElement('show-success');
         }
     }
@@ -150,7 +170,7 @@
 </script>
 
 <div id="login-status">
-  Logged In as [* user.login *] (<a href="javascript:logOut();">logout</a>).
+  Logged In as [* user.login *] (<a href="javascript:disp.showOnlyElement('password-change');">change pwd</a>, <a href="javascript:logOut();">logout</a>).
 </div>
 
 <div id="show-error">[* cgi.param('error') *]</div>
@@ -219,6 +239,21 @@
       <input type="text" name="email" id="recoveremail" />
       </label>
       <input type="submit" name="password-recover" class="submit" value="Recover" />
+    </fieldset>
+  </form>
+</div>
+
+<div id="password-change">
+  <form id="password-change-form" method="post">
+    <fieldset class="standard-form">
+      <legend>Change Password</legend>
+      <label for="changepass">Password
+      <input type="password" name="pass" id="changepass" />
+      </label>
+      <label for="changepass2">Verify Password
+      <input type="password" name="pass2" id="changepass2" />
+      </label>
+      <input type="submit" name="password-change" class="submit" value="Change" />
     </fieldset>
   </form>
 </div>

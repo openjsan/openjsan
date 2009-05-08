@@ -108,11 +108,29 @@ __MESSAGE__
 
     $message .= 'Login: ' . $self->config->get('jause') . "\n";
 
-    my $sender = Email::Send->new({mailer => 'SMTP'});
-    $sender->mailer_args([Host => 'localhost']);
+    my $sender = Email::Send->new({mailer => 'Sendmail'});
+    #$sender->mailer_args([Host => 'localhost']);
     $sender->send($message);
 
     $user->pass(md5_hex($temp_pass));
+    $user->update;
+
+    return { };
+}
+
+sub password_change {
+    my ($self, $args) = @_;
+
+    return { error => "Not logged in" } unless $args->{seed};
+    my $seed = $self->data->seed->search(seed => $args->{seed})->first;
+    return { error => "Not logged in" } unless $seed;
+    my $user = $seed->author;
+    return { error => "No such user" } unless $user;
+
+    return { error => "Passwords don't match" }
+      if $args->{pass} ne $args->{pass2};
+
+    $user->pass(md5_hex($args->{pass}));
     $user->update;
 
     return { };
