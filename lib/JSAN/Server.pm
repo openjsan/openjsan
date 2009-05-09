@@ -108,8 +108,8 @@ __MESSAGE__
 
     $message .= 'Login: ' . $self->config->get('jause') . "\n";
 
-    my $sender = Email::Send->new({mailer => 'Sendmail'});
-    #$sender->mailer_args([Host => 'localhost']);
+    my $sender = Email::Send->new({mailer => 'SMTP'});
+    $sender->mailer_args([Host => 'localhost']);
     $sender->send($message);
 
     $user->pass(md5_hex($temp_pass));
