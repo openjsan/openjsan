@@ -428,22 +428,29 @@ sub _get_lib_name {
     $self->js_ns->{$js}->update;
 }
 
+
 sub _parse_inline_pod {
     my ($self, $js) = @_;
+    
+    my $js_libs = $self->js_libs->{$js};
 
-    my $parser = Pod::Simple::HTML->new;
-    $self->pod_parser($parser);
-    my $html;
-    $self->js_libs->{$js}->{html} = '';
-    $self->pod_parser->perldoc_url_prefix( "/go?l=" );
-    $self->pod_parser->output_string(\($self->js_libs->{$js}->{html}));
-    $self->pod_parser->bare_output(1);
-    $self->pod_parser->parse_file($js);
+    $self->_copy_from_existing_html($js);
     
-    $self->js_libs->{$js}->{doc_file} = $js;
+    if (!$js_libs->{html}) {
+        
+        my $pod_parser = $self->pod_parser(Pod::Simple::HTML->new);
+        $js_libs->{html} = '';
+        
+        $pod_parser->perldoc_url_prefix( "/go?l=" );
+        $pod_parser->output_string(\($js_libs->{html}));
+        $pod_parser->bare_output(1);
+        
+        $pod_parser->parse_file($js);
+        
+        $js_libs->{doc_file} = $js;
+    }
     
-    $self->_parse_external_pod($js)         unless $self->js_libs->{$js}->{html};
-    $self->_copy_from_existing_html($js)    unless $self->js_libs->{$js}->{html};
+    $self->_parse_external_pod($js) unless $js_libs->{html};
 }
 
 
