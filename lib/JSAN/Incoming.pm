@@ -431,6 +431,10 @@ sub _get_lib_name {
 sub _parse_inline_pod {
     my ($self, $js) = @_;
 
+    $self->_copy_from_existing_html($js);
+    
+    return if $self->js_libs->{$js}->{html};
+
     my $parser = Pod::Simple::HTML->new;
     $self->pod_parser($parser);
     my $html;
@@ -443,7 +447,6 @@ sub _parse_inline_pod {
     $self->js_libs->{$js}->{doc_file} = $js;
     
     $self->_parse_external_pod($js)         unless $self->js_libs->{$js}->{html};
-    $self->_copy_from_existing_html($js)    unless $self->js_libs->{$js}->{html};
 }
 
 
