@@ -428,8 +428,13 @@ sub _get_lib_name {
     $self->js_ns->{$js}->update;
 }
 
+
 sub _parse_inline_pod {
     my ($self, $js) = @_;
+    
+    $self->_copy_from_existing_html($js);
+    
+    return if $self->js_libs->{$js}->{html};
 
     my $parser = Pod::Simple::HTML->new;
     $self->pod_parser($parser);
@@ -440,9 +445,39 @@ sub _parse_inline_pod {
     $self->pod_parser->bare_output(1);
     $self->pod_parser->parse_file($js);
     
-    return $self->_parse_external_pod($js) unless $self->js_libs->{$js}->{html};
-    $self->js_libs->{$js}->{doc_file} = $js;    
+    $self->js_libs->{$js}->{doc_file} = $js;
+
+    $self->_parse_external_pod($js)         unless $self->js_libs->{$js}->{html};
 }
+
+
+sub _copy_from_existing_html {
+    my ($self, $js) = @_;
+    
+    my $srcdist = $self->src_dist;
+    
+    my ($lib) = $js =~ m[$srcdist/lib/(.+)];
+    $lib =~ s/\.js/\.html/;
+    
+    my $html_file = "$srcdist/doc/html/$lib"
+    return unless -e $html_file;
+    
+    my $html;
+    
+    #slurping
+    {
+        local($/) ;
+        open(my $fh, $html_file) or die "Cannot open $html_file: $!\n";
+        $html = < $fh >;
+        close $fh;
+    }
+    
+    if ($html) {
+        $self->js_libs->{$js}->{html} = $html;
+        $self->js_libs->{$js}->{doc_file} = $html_file;
+    }
+}
+
 
 sub _parse_external_pod {
     my ($self, $js) = @_;
