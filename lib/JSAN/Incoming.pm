@@ -459,7 +459,7 @@ sub _copy_from_existing_html {
     my ($lib) = $js =~ m[$srcdist/lib/(.+)];
     $lib =~ s/\.js/\.html/;
     
-    my $html_file = "$srcdist/doc/html/$lib"
+    my $html_file = "$srcdist/doc/html/$lib";
     return unless -e $html_file;
     
     my $html;
@@ -468,7 +468,7 @@ sub _copy_from_existing_html {
     {
         local($/) ;
         open(my $fh, $html_file) or die "Cannot open $html_file: $!\n";
-        $html = < $fh >;
+        $html = <$fh>;
         close $fh;
     }
     
