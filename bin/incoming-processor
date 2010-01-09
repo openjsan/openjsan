@@ -1,8 +1,8 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 use strict;
 use warnings;
 
-use lib qw[lib ../lib];
+use lib qw[../../lib];
 use JSAN::Incoming;
 use IO::All;
 
