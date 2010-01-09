@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use lib qw[../../lib];
+use lib qw[lib ../lib];
 use JSAN::Incoming;
 use IO::All;
 
