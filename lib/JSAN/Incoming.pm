@@ -682,10 +682,13 @@ sub _set_dist_name {
 
 sub _find_dist_in_db {
     my ($self) = @_;
+    
+    my $filename = $self->dist_name
+    
     my $dist = $self->jsan->data->distribution->search(
-        filename => $self->dist_name,
+        filename => $filename,
     )->first;
-    die "Distribution is not in the database" unless $dist;
+    die "Distribution '$filename' is not in the database" unless $dist;
     $self->dist($dist);
 }
 
