@@ -13,7 +13,7 @@ sub new {
     $conf_filename   .= $ENV{JSAN_SITE};
     $conf_filename   .= '/etc/jsan.cfg';
 
-    open my $conf_file, "<", $conf_filename or die "Couldn't open file: $!"; 
+    open my $conf_file, "<", $conf_filename or die "Couldn't open file: [$conf_filename] $!"; 
     my $json = join("", <$conf_file>); 
     close $conf_file;
   
