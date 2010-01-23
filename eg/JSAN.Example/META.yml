@@ -1,0 +1,19 @@
+---
+abstract: 'A Sample Lib'
+author:
+  - 'A. Thor <user@example.com>'
+build_requires:
+  Test.Simple: 0.10
+configure_requires:
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3601'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: JSAN.Example
+requires:
+  JSAN: 0
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.02

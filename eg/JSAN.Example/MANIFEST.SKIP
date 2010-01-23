@@ -25,3 +25,4 @@
 \b\.#
 ^Build.PL$
 ^DEVELOPER$
+^MYMETA.yml$
