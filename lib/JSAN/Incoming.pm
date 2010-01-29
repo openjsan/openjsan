@@ -603,7 +603,11 @@ sub _setup_history {
 
 sub _check_for_older {
     my ($self) = @_;
-    die "This distribution is older than the current release!"
+    
+    my $this_version        = $self->dist->version;
+    my $current_release     = $self->history_latest->version;
+    
+    die "This distribution [$this_version] is older than the current release [$current_release]!"
          if $self->history_latest  != $self->dist; # older version
 }
 
