@@ -585,7 +585,7 @@ sub _setup_history {
     my ($self) = @_;
     my @dists = (
         map  { $_->[1] }
-        sort { $a->[0] <=> $b->[0] }
+        sort { $a->[0] cmp $b->[0] }
         map  { [ qv($_->version) => $_ ] }
         $self->jsan->data->distribution->search(
             name => $self->dist->name
