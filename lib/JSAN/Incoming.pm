@@ -9,7 +9,7 @@ use IO::All;
 use Archive::Any;
 use File::Path qw[mkpath];
 use File::Basename qw[fileparse];
-use version;
+use version 0.77;
 use File::Find::Rule;
 use Pod::Simple::HTML;
 use Template;
@@ -583,14 +583,10 @@ sub _setup_archive {
 
 sub _setup_history {
     my ($self) = @_;
-    my @dists = (
-        map  { $_->[1] }
-        sort { $a->[0] cmp $b->[0] }
-        map  { [ qv($_->version) => $_ ] }
-        $self->jsan->data->distribution->search(
-            name => $self->dist->name
-        )
-    );
+    
+    my @dists = $self->jsan->data->distribution->search(name => $self->dist->name);
+    
+    @dists = sort { version->parse($a->version) <=> version->parse($b->version) } @dists;
 
     $self->history(\@dists);
     $self->history_first($self->history->[0]);
